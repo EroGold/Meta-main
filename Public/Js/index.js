@@ -9,7 +9,8 @@ $(document).ready(function(){
                 "background": "#da251c",
                 "left": "0px",
                 "margin-top": "0",
-                "height": "65px"
+                "height": "65px",
+                
             })
 
             $('.search-box').css({

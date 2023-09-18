@@ -307,6 +307,7 @@ h2{
 .market ul li{
     text-align: center;
     margin: 15px 3px;
+    margin-bottom: 0px;
 }
 
 .market .icon-market img{
