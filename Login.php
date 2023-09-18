@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Public/Css/base.css">
     <link rel="stylesheet" href="Public/Css/main.css">
+    <link rel="stylesheet" href="Public/Css/loginpg.css">
     <link rel="stylesheet" href="Public/Template/glider.css">
     <link rel="stylesheet" href="Public/Template/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="Public/Template/bootstrap-5.0.2-dist/css/bootstrap-grid.css">

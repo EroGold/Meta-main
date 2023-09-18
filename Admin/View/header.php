@@ -20,7 +20,7 @@
     
                         <div class="cart-and-account">
                             <!-- Account -->
-                            <a href="" class="block account-btn">
+                            <a href="Login.php" class="block account-btn">
                                 <div class="login">
                                     <i class="fa-solid fa-user"></i>
                                     <span class="top-title">
