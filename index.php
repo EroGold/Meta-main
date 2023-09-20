@@ -15,27 +15,27 @@
     <link rel="icon" type="image/x-icon" href="">
 </head>
 <body>
-    <?php include './Admin/View/header.php'; ?>
+    <?php include './Site/View/header.php'; ?>
 <!-- menu -->
-   <?php include './Admin/View/menu.php'; ?>
+   <?php include './Site/View/menu.php'; ?>
 <!-- market -->
-    <?php include './Admin/View/market.php'; ?>
+    <?php include './Site/View/market.php'; ?>
 <!-- Danh muc hot -->
-    <?php include './Admin/View/hot-catalog.php';?>
+    <?php include './Site/View/hot-catalog.php';?>
 <!-- Flash sales -->
-    <?php include './Admin/View/flash-sale.php';?>
+    <?php include './Site/View/flash-sale.php';?>
 <!-- goi y -->
-    <?php include './Admin/View/suggest.php';?>
+    <?php include './Site/View/suggest.php';?>
 <!-- Dien may dien lanh -->
-    <?php include './Admin/View/tag-catalog.php';?>
+    <?php include './Site/View/tag-catalog.php';?>
 <!-- thuong hieu hot -->
-    <?php include './Admin/View/thuonghieu.php';?>
+    <?php include './Site/View/thuonghieu.php';?>
 <!-- ho tro va dich vu -->
-    <?php include './Admin/View/service.php';?>
+    <?php include './Site/View/service.php';?>
 <!-- cam ket -->
-    <?php include './Admin/View/camket.php';?>
+    <?php include './Site/View/camket.php';?>
 
-   <?php include './Admin/View/footer.php' ?>
+   <?php include './Site/View/footer.php' ?>
 
     <script src="Public/Js/index.js"></script>
 </body>

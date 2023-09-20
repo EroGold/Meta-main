@@ -30,9 +30,9 @@
                         </div>
                     </div>
                     <div class="member-col member-right">
-                        <form action="Admin/Model/mLogin.php" method="POST">
-                            <div class="form-subtitle">
-                                Đăng nhập
+                        <form action="Admin/Model/mRegister.php" method="POST">
+                            <div class="form-subtitle" style="font-size: 20px; margin: 30px 0 10px 20px">
+                                Đăng ký
                             </div>
 
                             <div class="form-input">
@@ -43,9 +43,23 @@
                             </div>
 
                             <div class="form-input">
+                                <input type="tel" name="txtTel">
+                                <label for="">
+                                    Nhập số điện thoại
+                                </label>
+                            </div>
+
+                            <div class="form-input">
                                 <input type="password" name="txtPassword">
                                 <label for="">
                                     Mật khẩu
+                                </label>
+                            </div>
+                            
+                            <div class="form-input">
+                                <input type="password" name="txtPasswordConfirm">
+                                <label for="">
+                                    Xác nhận mật khẩu
                                 </label>
                             </div>
 
@@ -57,8 +71,8 @@
                             <button class="submit">
                                 đăng nhập
                             </button>
-                            <div class="register-link">
-                                Bạn chưa có tài khoản? <a href="Register.php">Đăng ký</a>
+                            <div class="login-link">
+                                Bạn đã có tài khoản? <a href="Login.php">Đăng nhập</a>
                             </div>
                         </form>
                         <div class="devide">
