@@ -1,29 +1,27 @@
 <?php
 $data = $_POST;
 $errors = [];
-
-    //Validate name
-    if (!is_string($data['name']) || strlen($data['name']) < 5 || strlen($data['name']) > 55) {
-    $errors['name'] = $data['name'] . "Tên cầu thủ không hợp lệ!";
+    //Validate discount
+    if (!is_numeric($data['discount']) || $data['discount'] > 0 ) {
+    $errors['discount'] = "Tuổi không hợp lệ!";
     }
-    //Validate age
-    if (!is_numeric($data['age']) || $data['age'] < 0 || $data['age'] > 150) {
-    $errors['age'] = "Tuổi không hợp lệ!";
+    //Validate image
+    if (!is_string($data['image']) ) {
+    $errors['image'] = "Hình ảnh không hợp lệ!";
     }
-    //Validate national
-    if (!is_string($data['national']) || strlen($data['national']) < 2 
-    || strlen($data['national']) > 55) {
-    $errors['national'] = "Quốc tịch không hợp lệ!";
+    //Validate info
+    if (!is_string($data['info'])) {
+    $errors['info'] = "Thông tin không hợp lệ!";
     }
-    //Validate position
-    if (!is_string($data['position']) || strlen($data['position']) < 2 
-    || strlen($data['position']) > 10) {
-    $errors['position'] = "Vị trí không hợp lệ!";
+    //Validate price
+    if (!is_numeric($data['price'])) {
+        $errors['price'] = "Giá không hợp lệ!";
+        }
+    //Validate trạng thái
+    if (!is_string($data['prod_status']) || $data['prod_status'] < 0 || $data['prod_status'] > 1) {
+    $errors['prod_status'] = "trạng thái không hợp lệ!";
     }
-    //Validate salary
-    if (!is_numeric($data['salary']) || $data['salary'] < 0 || $data['salary'] > 1000000) {
-    $errors['salary'] = "Lương không hợp lệ!";
-    }
+    // Validate brand
     if (count($errors) > 0) {
     $err_str = '<ul>';
     foreach ($errors as $err) {
@@ -35,17 +33,15 @@ $errors = [];
     //Kết nối databse
     $con = mysqli_connect('localhost', 'root', '', 'meta');
     //Viết câu SQL lấy tất cả dữ liệu trong bảng players
-    $sql = "INSERT INTO `product` 
-    (`prod_id`, `discount`, `image`, `price`, `prod_status`, `brand`) 
-    VALUES ('".$data['prod_id']."', '".$data['discount']."',
-    '".$data['image']."', '".$data['price']."', '".$data['prod_status']."', '".$data['brand']."');";
+    $sql = "INSERT INTO `product` (`discount`, `image`, `info`, `price`, `prod_status`, `brand`) 
+    VALUES ('".$data['discount']."', '".$data['image']."', '".$data['info']."', '".$data['price']."', '".$data['prod_status']."', '".$data['brand']."');";
     //Chạy câu SQL
-    if ($result = mysqli_query($con,$sql)) {
+    if ($result = mysqli_query($con, $sql)) {
         echo "<h1>Thêm mới cầu thủ thành công Click vào 
-        <a href='index.php'>đây</a> để về trang danh sách</h1>";
+        <a href='manager.php'>đây</a> để về trang danh sách</h1>";
     }else{
         echo "<h1>Có lỗi xảy ra Click vào 
-        <a href='index.php'>đây</a> để về trang danh sách</h1>";
+        <a href='manager.php'>đây</a> để về trang danh sách</h1>";
     }
 
     }

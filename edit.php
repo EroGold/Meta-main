@@ -1,3 +1,31 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $conn = new mysqli("localhost", "root", "", "meta");
+    
+        if ($conn->connect_error) {
+            die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+        }
+    
+        $discount = $_POST["discount"];
+        $image = $_POST["image"];
+        $info = $_POST["info"];
+        $price = $_POST["price"];
+        $prod_status = $_POST["prod_status"];
+        $brand = $_POST["brand"];
+    
+        $sql = "INSERT INTO `product` (`discount`, `image`, `info`, `price`, `prod_status`, `brand`) 
+        VALUES ('$discount', '$image', '$info', '$price', '$prod_status', '$brand')";
+        if ($conn->query($sql) === TRUE) {
+            echo 'Thêm thành công';
+        } else{
+            echo 'Lỗi ';
+        }
+        $conn->close();
+    
+        header("Location: manager.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,47 +63,49 @@
     </head>
     <body>
         <?php 
-            $prod_id = $_GET['prod_id'];
+            $id = $_GET['id'];
             //Kết nối databse
             $con = mysqli_connect('localhost', 'root', '', 'meta');
             //Viết câu SQL lấy tất cả dữ liệu trong bảng players
-            $sql="SELECT * FROM `product` WHERE `prod_id`= ".$prod_id;
+            $sql="SELECT * FROM `product` WHERE `prod_id`= ".$id;
             //Chạy câu SQL
             $result=mysqli_query($con,$sql);
             //Gắn dữ liệu lấy được vào mảng $data
-            if ($result->num_rows > 0) {
-                // Lặp qua kết quả và thêm dữ liệu vào mảng
-                while ($row = $result->fetch_assoc()) {
-                    $data[] = $row;
-                }
-            } else {
-                echo "Không có dữ liệu nào.";
+            while ($row=mysqli_fetch_assoc($result)) {
+                $info = $row;
             }
         ?>
         <form action="process.php" method="POST">
             <h1>Chỉnh sửa thông tin sản phẩm</h1>
+            
             <div class="form-group">
-                <input type="text" name="prod_id" value="<?php echo $prod_id ?>"><span>ID sản phẩm </span>
+                <input type="text" name="discount" value="<?php echo $info['discount']; ?>"><span>Giảm giá: </span>
             </div>
             <div class="form-group">
-                <input type="text" name="discount" value="<?php echo $info['discount'] ?>"><span>Tuổi: </span>
+                <input type="text" name="image" value="<?php echo $info['image']; ?>"><span>Hình ảnh: </span>
             </div>
             <div class="form-group">
-                <input type="text" name="image" value="<?php echo $info['image'] ?>"><span>Quốc tịch: </span>
+                <input type="text" name="info" value="<?php echo $info['info']; ?>"><span>Thông tin: </span>
             </div>
             <div class="form-group">
-                <input type="text" name="info" value="<?php echo $info['info'] ?>"><span>Vị trí: </span>
+                <input type="text" name="price" value="<?php echo $info['price']; ?>"><span>Giá: </span>
             </div>
             <div class="form-group">
-                <input type="text" name="prod_status" value="<?php echo $info['prod_status'] ?>"><span>Lương: </span>
+                <input type="text" name="prod_status" value="<?php echo $info['prod_status']; ?>"><span>Lương: </span>
             </div>
             <div class="form-group">
-                <input type="text" name="brand" value="<?php echo $info['brand'] ?>"><span>Vị trí: </span>
+                <span>Hãng</span>
+                <select name="brand">
+                    <option value="Dell">Dell</option>
+                    <option value="Asus">Asus</option>
+                    <option value="MSI">MSI</option>
+                    <option value="Lenovo">Lenovo</option>
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit">Cập nhật</button>
                 <button type="reset">Reset</button>
-                <a href="index.php"><button type="button">Cancle</button></a>
+                <a href="index.php"><button type="button">Cancel</button></a>
             </div>
         </form>
     </body>
