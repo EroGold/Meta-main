@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Public/Css/base.css">
     <link rel="stylesheet" href="Public/Css/main.css">
+    <link rel="stylesheet" href="Public/Css/prod-detail.css">
     <link rel="stylesheet" href="Public/Template/glider.css">
     <link rel="stylesheet" href="Public/Template/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="Public/Template/bootstrap-5.0.2-dist/css/bootstrap-grid.css">
@@ -17,27 +18,10 @@
 <body>
     <?php include './Site/View/header.php'; ?>
 
-<!-- menu-->
-   <?php include './Site/View/menu.php'; ?>
-<!-- market -->
-    <?php include './Site/View/market.php'; ?>
-<!-- Danh muc hot -->
-    <?php include './Site/View/hot-catalog.php';?>
-<!-- Flash sales -->
-    <?php include './Site/View/flash-sale.php';?>
-<!-- goi y -->
-    <?php include './Site/View/suggest.php';?>
-<!-- Dien may dien lanh -->
-    <?php include './Site/View/tag-catalog.php';?>
-<!-- thuong hieu hot -->
-    <?php include './Site/View/thuonghieu.php';?>
-<!-- ho tro va dich vu -->
-    <?php include './Site/View/service.php';?>
-<!-- cam ket -->
-    <?php include './Site/View/camket.php';?>
+    <?php include './Site/View/prod-detail.php' ?>
 
-   <?php include './Site/View/footer.php' ?>
+    <?php include './Site/View/brand.php' ?>
 
-    <script src="Public/Js/index.js"></script>
+
 </body>
 </html>

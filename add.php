@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $prod_status = $_POST["prod_status"];
     $brand = $_POST["brand"];
 
-    $sql = "INSERT INTO `product` (`discount`, `image`, `info`, `price`, `prod_status`, `brand`) VALUES ('$discount', '$image', '$info', '$price', '$prod_status', '$brand')";
+    $sql = "INSERT INTO `product` (`discount`, `image`, `info`, `price`, `prod_status`, `type`) VALUES ('$discount', '$image', '$info', '$price', '$prod_status', '$type')";
     if ($conn->query($sql) === TRUE) {
         echo 'Thêm thành công';
     } else{
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 text-align: center;
             }
             div.form-group{
-                float: right;
+                display: flex;
                 width: 90%;
                 height: 24px;
                 margin: 5px;
@@ -80,14 +80,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span>Trạng thái:</span><input type="text" name="prod_status">
         </div>
         <div class="form-group">
-                <span>Hãng</span>
-                <select name="brand">
-                    <option value="Dell">Dell</option>
-                    <option value="Asus">Asus</option>
-                    <option value="MSI">MSI</option>
-                    <option value="Lenovo">Lenovo</option>
-                </select>
-            </div>
+            <span>Phân loại:</span><select name="type" id="">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>           
+            </select>
+        </div>
         <div class="form-group">
             <button type="submit">Thêm</button>
             <button type="reset">Reset</button>

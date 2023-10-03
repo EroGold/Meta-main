@@ -9,6 +9,8 @@ $(document).ready(function(){
                 "background": "#da251c",
                 "left": "0px",
                 "margin-top": "0",
+                "margin-right": "-70px",
+                "margin-left": "-70px",
                 "height": "65px",
                 
             })
@@ -25,7 +27,7 @@ $(document).ready(function(){
                 "z-index": "1000", 
                 "background": "#da251c",
                 "width": "110%",
-                "margin-top": "60px",
+                "margin-top": "100px",
                 "margin-right": "-70px",
                 "margin-left": "-70px",
                 "top": "0",

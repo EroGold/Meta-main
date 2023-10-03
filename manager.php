@@ -113,10 +113,8 @@ foreach ($data as $value) {
 
             <div class="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <form action="Admin/Model/mSearch.php" method="POST">
-                    <input type="text" name="txtSearch">
-                    <input type="submit" value="Tìm kiếm">
-                </form>
+                    <input type="text" name="txtSearch" id="searchInput">
+                    <button type="submit" value="Tìm kiếm" onclick="searchData()"> Tìm kiếm</button>
             </div>
         </div>
 
@@ -166,6 +164,19 @@ foreach ($data as $value) {
                 },
                 error: function(error) {
                     console.error('Lỗi:', error);
+                }
+            });
+        }
+
+        function searchData(){
+            var keyword = document.getElementById('searchInput').value;
+
+            $.ajax({
+                type: 'POST',
+                url: 'Admin/Model/mSearch.php',
+                data: { keyword: keyword },
+                success: function(response) {
+                    document.getElementById('table-container').innerHTML = response;
                 }
             });
         }
