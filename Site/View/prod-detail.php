@@ -1,11 +1,10 @@
-<section>
     <div class="warp">
         <div class="prod detail">
             <div class="prod title">
                 <span>Tủ lạnh</span>
             </div>
     
-            <div class="prod-detail-item">
+            <div class="item">
                 <ul>
                     <li>
                         <a href="">
@@ -56,4 +55,3 @@
             </div>
         </div>
     </div>
-</section>

@@ -18,9 +18,17 @@
 <body>
     <?php include './Site/View/header.php'; ?>
 
-    <?php include './Site/View/prod-detail.php' ?>
+    <section style="display: flex; flex-direction: column; float: left;">
+       <?php include './Site/View/prod-detail.php' ?>
+    
+       <?php include './Site/View/brand.php' ?>
 
-    <?php include './Site/View/brand.php' ?>
+       <?php include './Site/View/prod-info.php' ?>
+    </section>
+
+    <section style="display: flex; flex-direction: column; float: right;">
+
+    </section>
 
 
 </body>

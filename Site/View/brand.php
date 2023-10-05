@@ -1,14 +1,16 @@
-<section>
     <div class="warp">
         <div class="brand detail">
             <div class="title">
                 <span>Thương hiệu</span>
             </div>
 
-            <div class="brand-item">
+            <div class="item">
                 <ul>
                     <li class="brand-search">
-                        <input type="text">
+                        <input type="brand-search">
+                        <button class="search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </li>
 
                     <li>
@@ -96,10 +98,15 @@
                         <span>Darling</span>
                         <i class="prod-count">(15)</i>
                     </li>
+                    <li class="show">
+                        <a href="">
+                            Xem thêm<i class="fa-solid fa-angles-down"></i>
+                        </a>
+                        <a href="">
+                            Thu gọn<i class="fa-solid fa-angles-up"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </div>
-        
-       
+        </div>  
     </div>
-</section>

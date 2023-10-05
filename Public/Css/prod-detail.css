@@ -5,7 +5,7 @@
 }
 
 .title{
-    border-bottom: #ccc solid 1px;
+    border: #ccc solid 1px;
     text-align: center;
 }
 
@@ -19,4 +19,21 @@
 .prod-detail-item ul li a{
     font-size: 15px;
     line-height: 20px;
+}
+
+/* brand */
+.brand-search{
+    text-align: center;
+}
+
+.brand-search button{
+    background-color: orange;
+}
+
+.show{
+    text-align: center;
+}
+
+.show a:nth-child(2){
+    display: none;
 }
