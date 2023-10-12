@@ -18,7 +18,7 @@
     </div>
 
     <div class="prod-count">
-        <span>744 Tủ lạnh</span>
+        <?php include 'Admin/Model/prod_count.php' ?>
     </div>
 
     <div class="sort">
