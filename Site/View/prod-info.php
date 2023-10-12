@@ -1,4 +1,4 @@
-<div class="warp" style="display: flex; flex-direction: column;">
+<div class="" style="display: flex; flex-direction: column;">
     <div class="capacity detail">
         <div class="title">
             <span>Dung tích</span>

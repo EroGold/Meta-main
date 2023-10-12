@@ -18,18 +18,24 @@
 <body>
     <?php include './Site/View/header.php'; ?>
 
-    <section style="display: flex; flex-direction: column; float: left;">
-       <?php include './Site/View/prod-detail.php' ?>
+    <?php include './Site/View/prod-link.php' ?>
+    <div class="content" style="display: flex;">
+        <section style="display: flex; flex-direction: column; width: 30%;">
+
+           <?php include './Site/View/prod-detail.php' ?>
+        
+           <?php include './Site/View/brand.php' ?>
     
-       <?php include './Site/View/brand.php' ?>
+           <?php include './Site/View/prod-info.php' ?>
+        </section>
+    
+        <section style="display: flex; flex-direction: column; margin-left: 10px;">
+            <?php include './Site/View/prod-detail-horizontal.php'?>
 
-       <?php include './Site/View/prod-info.php' ?>
-    </section>
+            <?php include './Site/View/prod-list.php'?>
+        </section>
+    </div>
 
-    <section style="display: flex; flex-direction: column; float: right;">
-
-    </section>
-
-
+    <script src="./Public/Js/get_prod.js"></script>
 </body>
 </html>

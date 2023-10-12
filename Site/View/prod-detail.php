@@ -1,4 +1,3 @@
-    <div class="warp">
         <div class="prod detail">
             <div class="prod title">
                 <span>Tủ lạnh</span>
@@ -54,4 +53,3 @@
                 </ul>
             </div>
         </div>
-    </div>

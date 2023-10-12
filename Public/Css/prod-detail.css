@@ -1,7 +1,6 @@
 .detail{
     background-color: #fff;
-    width: 20%;
-    float: left;
+    width: 100%;
 }
 
 .title{
@@ -37,3 +36,167 @@
 .show a:nth-child(2){
     display: none;
 }
+
+.brand .item ul li{
+    cursor: pointer;
+}
+
+/* prod-list-horizontal */
+.prod-detail-horizontal{
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.prod-detail-horizontal .item ul li{
+    width: 12%;
+}
+
+.prod-detail-horizontal .item ul li a img{
+    width: 50%;
+    margin: 30px 30px 0 30px;
+}
+
+.prod-detail-horizontal .item ul li a span{
+    border: none;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+/* prod-list */
+.prod-list{
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 5px; 
+}
+
+/* tag */
+.prod-list .tag{
+    padding: 20px 10px;
+    border-bottom: #ccc solid 1px;
+}
+
+.prod-list .tag .item a{
+    border: 1px solid #5271cd;
+    color: #5271cd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* brand-name */
+.prod-list .brand-name{
+    padding: 10px;
+}
+
+.prod-list .brand-name .item ul li a img{
+    border: #ddd solid 1px;
+    padding: 5px;
+    width: 5%;
+}
+
+/* prod-count */
+.prod-list .prod-count{
+    font-weight: bold;
+    padding: 0 0 0 5px;
+    line-height: 30px;
+}
+/* sort */
+.prod-list .sort ul{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.prod-list .sort ul li a{
+    border: #ddd solid 1px;
+    padding: 5px;
+    margin: 0 5px ;
+}
+
+/* choose */
+.choose{
+    padding-bottom: 10px;
+}
+
+.choose .item ul{
+    display: flex;
+}
+
+.choose .item ul li{
+    background-color: #ddd;
+    padding: 5px;
+    margin-left: 5px;
+    display: none;
+}
+
+
+.choose .item ul li a i{
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* prod-review */
+.prod-review{
+    border-top: #ddd solid 1px;
+}
+.prod-review .prod .item .tragop{
+    bottom: 140px;
+}
+
+.prod-review .prod .item .discount{
+    transform: none;
+    width: 50px;
+    right: 10px;
+    background-color: #f90;
+    border-radius: 20px;
+}
+
+.prod-review .prod .item ul{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.prod-review .prod .item .name{
+    margin: 10px 0 5px 0;
+}
+
+.prod-review .prod .item .flash-sale-product{
+    width: 230px;
+    margin: 5px 10px 0 10px;
+    height: 350px;
+    padding: 0 5px;
+}
+
+.prod-review .prod .item .flash-sale-product .name{
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+.prod-review .prod .item .flash-sale-product:hover{
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,.08);
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+
+.prod-review .prod .item .flash-sale-product:hover .buy-now{
+    display: block;
+}
+
+/* rate */
+
+/* buy now */
+.buy-now{
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.buy-now a{
+    background-color: #5271cd;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 10px 78px;
+}
+

@@ -14,7 +14,7 @@
                             </div>
     
                             <a href="">
-                                <img src="./asset/img/logo-web-meta.svg" alt="">
+                                <img src="./Public/img/logo-web-meta.svg" alt="">
                             </a>
                         </div>
     
