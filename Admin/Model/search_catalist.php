@@ -5,7 +5,7 @@
          die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
      }
  
-     $query = "SELECT * FROM product WHERE info like ''";
+     $query = "SELECT * FROM product WHERE info like Inverter";
      $result = mysqli_query($connection, $query);
  
      if (!$result) {

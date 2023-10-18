@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="Public/Template/glider.css">
     <link rel="stylesheet" href="Public/Template/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="Public/Template/bootstrap-5.0.2-dist/css/bootstrap-grid.css">
-    <script src="Public/Template/glider.js"></script>
     <script src="Public/Template/Jquery/jquery-3.7.0.min.js"></script>
     <title>Meta</title>
     <link rel="icon" type="image/x-icon" href="">
@@ -20,7 +19,7 @@
 
     <?php include './Site/View/prod-link.php' ?>
     <div class="content" style="display: flex;">
-        <section style="display: flex; flex-direction: column; width: 30%;">
+        <section style="display: flex; flex-direction: column; width: 25%;">
 
            <?php include './Site/View/prod-detail.php' ?>
         
@@ -36,6 +35,35 @@
         </section>
     </div>
 
-    <script src="./Public/Js/get_prod.js"></script>
+    <script>
+    // Gắn sự kiện click vào nút lọc sản phẩm mới
+    $(".brand .item ul li a").click(function () {
+        event.defaultPrevented();
+        $("#contentContainer").show();
+
+        var selectedOption = $(this).text();
+
+        $("#contentContainer").text(selectedOption);
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Model/get_catalist.php", // Đường dẫn tới file xử lý lọc sản phẩm mới
+            success: function (data) {
+                // Hiển thị kết quả trả về từ máy chủ
+                $("#search-results").html(data);
+            }
+        });
+    });
+
+    $(".prod-list .sort .item ul li a").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Model/get_catalist.php", // Đường dẫn tới file xử lý lọc sản phẩm mới
+            success: function (data) {
+                // Hiển thị kết quả trả về từ máy chủ
+                $("#search-results").html(data);
+            }
+        });
+    });
+    </script>
 </body>
 </html>

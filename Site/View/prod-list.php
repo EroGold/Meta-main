@@ -30,32 +30,32 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=price_asc">
                         Giá tăng dần
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=price_desc">
                         Giá giảm dần
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=price_discount">
                         Giảm giá
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=new">
                         Mới nhất 
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=tragop">
                         Trả góp
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="?sort=suggest">
                         META gợi ý  
                     </a>
                 </li>
@@ -67,7 +67,9 @@
         <div class="item">
             <ul>
                 <li id="contentContainer">
-                
+                    <p>
+
+                    </p>
                 </li>
             </ul>
         </div>
@@ -75,7 +77,7 @@
 
     <div class="prod-review">
         <div class="prod">
-            <div class="item">
+            <div class="item" id="search-results">
                 <?php include 'Admin/Model/get_catalist.php'; ?>
             </div>
         </div>
