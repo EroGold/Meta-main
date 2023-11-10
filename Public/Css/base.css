@@ -33,5 +33,8 @@ a {
     display: block;
 }
 
+.no-reload{
+    pointer-events: none;
+}
 
 

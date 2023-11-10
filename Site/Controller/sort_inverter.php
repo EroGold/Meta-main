@@ -5,20 +5,23 @@
         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
     }
 
-    if (isset($_POST['brand'])) {
-        $optionBrand = $_POST['brand'];
-    }   
-    $query = "SELECT * FROM product WHERE brand = '$optionBrand'";
-    
-    $brand = mysqli_query($connection, $query);
+    if (isset($_POST['tech'])) {
+        $selectedTech = $_POST['tech'];
+    }
 
-    if (!$brand) {
+    $sql = "SELECT * FROM product
+    INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
+    WHERE `product-info`.inverter = '$selectedTech'";
+    
+    $result = mysqli_query($connection, $sql);
+
+    if (!$result) {
         die('Lỗi truy vấn: ' . mysqli_error($connection));
     }
 
-    if (mysqli_num_rows($brand) > 0) {
+    if (mysqli_num_rows($result) > 0) {
         echo '<ul class="row row-cols-4">';
-        while ($row = mysqli_fetch_assoc($brand)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             echo '<li class="col">';
             echo'<div class="flash-sale-product">';
 
@@ -61,10 +64,9 @@
             echo'</li>';
         }
         echo '</ul>';
-    } else {
+    }else{
         echo "Không tìm thấy sản phẩm đáp ứng điều kiện";
     }
-    
-    // Đóng kết nối cơ sở dữ liệu
-    mysqli_close($connection);
+
+$connection->close();
 ?>

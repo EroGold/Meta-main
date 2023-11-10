@@ -34,36 +34,26 @@
             <?php include './Site/View/prod-list.php'?>
         </section>
     </div>
-
-    <script>
-    // Gắn sự kiện click vào nút lọc sản phẩm mới
-    $(".brand .item ul li a").click(function () {
-        event.defaultPrevented();
-        $("#contentContainer").show();
-
-        var selectedOption = $(this).text();
-
-        $("#contentContainer").text(selectedOption);
-        $.ajax({
-            type: "GET",
-            url: "/Admin/Model/get_catalist.php", // Đường dẫn tới file xử lý lọc sản phẩm mới
-            success: function (data) {
-                // Hiển thị kết quả trả về từ máy chủ
-                $("#search-results").html(data);
-            }
-        });
-    });
-
-    $(".prod-list .sort .item ul li a").click(function () {
-        $.ajax({
-            type: "GET",
-            url: "/Admin/Model/get_catalist.php", // Đường dẫn tới file xử lý lọc sản phẩm mới
-            success: function (data) {
-                // Hiển thị kết quả trả về từ máy chủ
-                $("#search-results").html(data);
-            }
-        });
-    });
-    </script>
 </body>
+
+<!-- <script>
+         $( ".search-brand").click(function(e) {
+              $("#contentContainer").show();
+               
+               var selectedOption = $(this).text();
+               
+               $("#contentContainer").text(selectedOption);
+      
+         var brand = $(this).data("brand");
+
+            $.ajax({
+                url: "/Admin/Model/get_catalist.php",
+                method: "GET",
+                success: function(result) {
+                    $("#search-results").html(result);
+                }
+            });
+        });
+</script> -->
+    
 </html>
