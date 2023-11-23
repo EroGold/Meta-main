@@ -15,10 +15,10 @@
                         </button>
                     </li>
 
-                    <li data-option="option1">
+                    <li>
                         <a href="#" class="search-brand" data-brand="Funiki">
-                            <input type="checkbox">
-                            <span>Funiki</span>
+                            <input class="checkbox" type="checkbox">
+                            <span class="val">Funiki</span>
                             <i class="prod-count">
                                 <?php
                                     $connection = mysqli_connect('localhost','root','','meta');
@@ -49,9 +49,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option2">
+                    <li>
                     <a href="#" class="search-brand" data-brand="AQUA">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>AQUA</span>
                             <i class="prod-count">
                             <?php
@@ -83,9 +83,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option3">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Casper">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Casper</span>
                             <i class="prod-count">
                             <?php
@@ -117,9 +117,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option4">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Electrolux">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Electrolux</span>
                             <i class="prod-count">
                             <?php
@@ -151,9 +151,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option5">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Toshiba">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Toshiba</span>
                             <i class="prod-count">
                             <?php
@@ -185,9 +185,9 @@
                             </i>
                         </a>
                         </li>
-                    <li data-option="option6">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Samsung">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Samsung</span>
                             <i class="prod-count">
                             <?php
@@ -219,9 +219,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option7">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Sharp">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Sharp</span>
                             <i class="prod-count">
                             <?php
@@ -253,9 +253,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option8">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Hitachi">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Hitachi</span>
                             <i class="prod-count">
                             <?php
@@ -287,9 +287,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option9">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Panasonic">
-                        <input type="checkbox">
+                        <input class="checkbox" type="checkbox">
                         <span>Panasonic</span>
                         <i class="prod-count"><?php
                                     $connection = mysqli_connect('localhost','root','','meta');
@@ -318,9 +318,9 @@
                                     }
                                 ?></i>
                     </li>
-                    <li data-option="option10">
+                    <li>
                     <a href="#" class="search-brand" data-brand="LG">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>LG</span>
                             <i class="prod-count">
                             <?php
@@ -352,9 +352,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option11">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Beko">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Beko</span>
                             <i class="prod-count">
                             <?php
@@ -386,9 +386,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option12">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Mitsubishi Electric">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Mitsubishi Electric</span>
                             <i class="prod-count">
                             <?php
@@ -420,9 +420,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option13">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Bosch">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Bosch</span>
                             <i class="prod-count">
                             <?php
@@ -454,9 +454,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option14">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Baumatic">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Baumatic</span>
                             <i class="prod-count">
                             <?php
@@ -488,9 +488,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option15">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Hisense">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Hisense</span>
                             <i class="prod-count">
                             <?php
@@ -522,9 +522,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option16">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Coex">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Coex</span>
                             <i class="prod-count">
                             <?php
@@ -556,9 +556,9 @@
                             </i>
                         </a>
                     </li>
-                    <li data-option="option17">
+                    <li>
                     <a href="#" class="search-brand" data-brand="Darling">
-                            <input type="checkbox">
+                            <input class="checkbox" type="checkbox">
                             <span>Darling</span>
                             <i class="prod-count">
                             <?php
@@ -605,22 +605,40 @@
 
     <script>
         $(document).ready(function(e){
-            $(".search-brand").click(function(e){
+            $(".detail .item ul li a").click(function(e){
                 e.preventDefault();
 
-                var optionBrand = $(this).data("brand");
-                $.ajax({
+                // function checked {
+                //     if($('.checkbox:checked'))
+                // }
+
+                if($('.checkbox').prop('checked')){
+
+                    var optionBrand = $('.search-brand input[type="checkbox"]:checked' ).data("brand");
+                    var optionCapacity = $('.search-capacity  ').data("capacity");
+                    var optionOrigin = $('.search-origin ').data("origin");
+                    var optionUtiliti = $('.search-utiliti').data("utiliti");
+    
+                    var params = {
+                        'brand' : optionBrand,
+                        'capacity' : optionCapacity,
+                        'origin' : optionOrigin,
+                        'utiliti' : optionUtiliti,
+                    }
+
+                    $.ajax({
                     type: 'POST',
                     url: 'Admin/Model/get_catalist.php',
-                    data: { brand: optionBrand},
+                    data: params,
                     success: function (response) {
                         $("#search-results").html(response);
                     },
                     error:  function(error){
                         console.log(error)
                         $("#search-results").html('Failed' + error);
-                    }
-                })
+                        }
+                    })
+                }
             })
         })
     </script>

@@ -1,47 +1,21 @@
-<?php
-    require_once("database.php");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Public/Css/base.css">
+    <link rel="stylesheet" href="Public/Css/main.css">
+    <link rel="stylesheet" href="Public/Css/prod-detail.css">
+    <link rel="stylesheet" href="Public/Template/glider.css">
+    <link rel="stylesheet" href="Public/Template/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="Public/Template/bootstrap-5.0.2-dist/css/bootstrap-grid.css">
+    <script src="Public/Template/Jquery/jquery-3.7.0.min.js"></script>
+    <title>Meta</title>
+    <link rel="icon" type="image/x-icon" href="">
+</head>
+<body>
+    <?php include './Site/View/header.php'; ?>
 
-    class product{
-        public $db;
-	    public $data;
-	    function __construct()
-	    {
-		    $this->db = new database();
-		    $this->data = array();
-	    }
-
-        function LayDanhSachSanpham($trangthai=2, $list_id=0, $tukhoa="")
-            {
-                $sql = "SELECT sp.*, list.list_name, list.list_status
-                        from product as sp Inner join list as list
-                        ON sp.list_id=list.list_id WHERE 1 ";
-                    
-                    if($list_id!=0)
-                        $sql = $sql . " AND Sp.list_id = " . $list_id;
-                        if($trangthai!=2) 
-                        {
-                            $sql = $sql . " AND status = " . $trangthai;
-                            $sql = $sql . " AND list_status = " . $trangthai;
-                        }
-                        
-                        if($tukhoa!="")
-                            $sql = $sql . " AND Sp.info LIKE '%" . $tukhoa . "%'";
-                            
-                        $ketqua = $this->db->ThucthiSQL($sql);
-
-                        $this->data=NULL;
-                        if($ketqua==TRUE)
-                            $this->data = $this->db->pdo_stm->fetchAll();
-                        return $ketqua;
-            }
-
-    	function LayDanhSachSP($trangthai=2, $list_id=0, $tukhoa="")
-            {
-                $conn = ConnectDB();
-                if($conn == null)
-                    return -1;
-            }
-
-
-    }
-?>
+</body>
+</html>

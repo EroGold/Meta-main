@@ -66,9 +66,9 @@
     <div class="choose">
         <div class="item">
             <ul>
-                <li id="contentContainer">
-                    <p>
-
+                <li>
+                    <p id="chooseContainer">
+                        
                     </p>
                 </li>
             </ul>

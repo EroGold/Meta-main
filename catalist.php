@@ -36,24 +36,15 @@
     </div>
 </body>
 
-<!-- <script>
-         $( ".search-brand").click(function(e) {
-              $("#contentContainer").show();
-               
-               var selectedOption = $(this).text();
-               
-               $("#contentContainer").text(selectedOption);
-      
-         var brand = $(this).data("brand");
+<script>
+         $(".item ul li").click(function(e) {
+            $('html, body').animate({scrollTop: 400}, 800);
+            
+            $(this).children().find('.checkbox').prop('checked', true);
 
-            $.ajax({
-                url: "/Admin/Model/get_catalist.php",
-                method: "GET",
-                success: function(result) {
-                    $("#search-results").html(result);
-                }
-            });
+            $(this).siblings().find('.checkbox').prop('checked', false);
+
         });
-</script> -->
+</script>
     
 </html>

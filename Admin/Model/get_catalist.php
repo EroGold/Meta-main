@@ -10,6 +10,7 @@
     }   
     $query = "SELECT * FROM product WHERE brand = '$optionBrand'";
     
+    echo $optionBrand;
     $brand = mysqli_query($connection, $query);
 
     if (!$brand) {
