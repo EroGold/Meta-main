@@ -12,14 +12,14 @@
     $query = "SELECT * FROM product 
                 INNER JOIN `product-info` 
                 ON product.prod_id = `product-info`.prod_id 
-                WHERE `product-info`.dungtichtong BETWEEN $selectedCapacity";
+                WHERE `product-info`.dungtichtong BETWEEN '$selectedCapacity'";
 
-    $result = mysqli_query($connection, $query);
+    $capacity = mysqli_query($connection, $query);
 
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($capacity) > 0) {
         echo '<ul class="row row-cols-4">';
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($capacity)) {
             echo '<li class="col">';
             echo'<div class="flash-sale-product">';
 

@@ -37,7 +37,7 @@
 </body>
 
 <script>
-         $(".item ul li").click(function(e) {
+         $(".item ul li").not('.show').not('.brand-search').click(function(e) {
             $('html, body').animate({scrollTop: 400}, 800);
             
             $(this).children().find('.checkbox').prop('checked', true);

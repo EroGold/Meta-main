@@ -5,13 +5,37 @@
         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
     }
 
-    if (isset($_POST['origin'])) {
-        $selectedOrigin = $_POST['origin'];
-    }
+        $selectedOrigin = $_POST['origin'] ?? ''; 
+        $selectedBrand = $_POST['brand'] ?? '';
+        $selectedCapacity = $_POST['capacity'] ?? ''; 
+        $selectedTech = $_POST['tech'] ?? ''; 
+        $selectedUtiliti = $_POST['utiliti'] ?? ''; 
+        $selectedModel = $_POST['model'] ?? ''; 
 
+
+
+        $condition = '';
+        if($selectedOrigin){
+            $condition .= " and  `product-info`.xuatxuthuonghieu = '$selectedOrigin'"; 
+        }
+        if($selectedBrand){
+            $condition .= " and  product.brand = '$selectedBrand'"; 
+        }
+        if($selectedCapacity){
+            $condition .= " and  `product-info`.dungtichtong BETWEEN $selectedCapacity"; 
+        }
+        if($selectedModel){
+            $condition .= " and  `product-info`.model = '$selectedModel'"; 
+        }
+        if($selectedUtiliti){
+            $condition .= " and  `product-info`.tienich = '$selectedUtiliti'"; 
+        }
+        if($selectedTech){
+            $condition .= " and  `product-info`.inverter = '$selectedTech'"; 
+        }
         $sql = "SELECT * FROM product
                 INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
-                WHERE `product-info`.xuatxuthuonghieu = '$selectedOrigin'";
+                WHERE 1=1 $condition";
         $result = mysqli_query($connection, $sql);
 
         if (!$result) {

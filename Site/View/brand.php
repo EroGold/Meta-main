@@ -18,7 +18,7 @@
                     <li>
                         <a href="#" class="search-brand" data-brand="Funiki">
                             <input class="checkbox" type="checkbox">
-                            <span class="val">Funiki</span>
+                            <span>Funiki</span>
                             <i class="prod-count">
                                 <?php
                                     $connection = mysqli_connect('localhost','root','','meta');
@@ -605,41 +605,37 @@
 
     <script>
         $(document).ready(function(e){
-            $(".detail .item ul li a").click(function(e){
+            $(".detail .item ul li").not('.show').not('.brand-search').click(function(e){
                 e.preventDefault();
 
-                // function checked {
-                //     if($('.checkbox:checked'))
-                // }
+                    var optionBrand = $('li .search-brand:has(.checkbox:checked)').data('brand');
+                    var optionCapacity = $('li .search-capacity:has(.checkbox:checked)').data('capacity');
+                    var optionOrigin = $('li .search-origin:has(.checkbox:checked)').data("origin");
+                    var optionTech = $('li .search-tech:has(.checkbox:checked)').data("tech");
+                    var optionUtiliti = $('li .search-utiliti:has(.checkbox:checked)').data("utiliti");
+                    var optionModel = $('li .search-model:has(.checkbox:checked)').data("model");
 
-                if($('.checkbox').prop('checked')){
-
-                    var optionBrand = $('.search-brand input[type="checkbox"]:checked' ).data("brand");
-                    var optionCapacity = $('.search-capacity  ').data("capacity");
-                    var optionOrigin = $('.search-origin ').data("origin");
-                    var optionUtiliti = $('.search-utiliti').data("utiliti");
-    
                     var params = {
                         'brand' : optionBrand,
                         'capacity' : optionCapacity,
                         'origin' : optionOrigin,
+                        'tech' : optionTech,
                         'utiliti' : optionUtiliti,
+                        'model' : optionModel,
                     }
-
                     $.ajax({
-                    type: 'POST',
-                    url: 'Admin/Model/get_catalist.php',
-                    data: params,
-                    success: function (response) {
+                        type: 'POST',
+                        url: 'Site/Controller/sort_origin.php',
+                        data: params,
+                        success: function (response) {
                         $("#search-results").html(response);
-                    },
-                    error:  function(error){
-                        console.log(error)
-                        $("#search-results").html('Failed' + error);
+                        },
+                        error:  function(error){
+                            console.log(error)
+                            $("#search-results").html('Failed' + error);
                         }
                     })
-                }
             })
         })
-    </script>
+        </script>
 
