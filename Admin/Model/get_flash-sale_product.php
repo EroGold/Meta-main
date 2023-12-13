@@ -49,7 +49,6 @@
             echo'<div class="countdown">';
             echo    '<div class="count-left">';
             echo        '<strong>'. $row['price'] .'đ </strong>';
-            $discounted_price = round($row['price'] * 100 / $row['discount'], -2);
             echo        '<strike>'. $discounted_price .'đ </strike>';
             echo    '</div>';
             echo    '<div class="count-right">';

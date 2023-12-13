@@ -38,6 +38,6 @@
 
    <?php include './Site/View/footer.php' ?>
 
-    <script src="Public/Js/index.js"></script>
+    <!-- <script src="Public/Js/index.js"></script> -->
 </body>
 </html>

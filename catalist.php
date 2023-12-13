@@ -19,7 +19,7 @@
 
     <?php include './Site/View/prod-link.php' ?>
     <div class="content" style="display: flex;">
-        <section style="display: flex; flex-direction: column; width: 25%;">
+        <section style="display: flex; flex-direction: column;">
 
            <?php include './Site/View/prod-detail.php' ?>
         

@@ -1,0 +1,206 @@
+/* prod pay */
+.prod-pay{
+    background: #fff;
+}
+
+/* prod information */
+.prod-information .item-name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prod-information .rate .evaluate .count{
+    font-size: 12px;
+    color: rgba(32, 153, 153, 0.637);
+    padding-top: 3px;
+}
+
+.prod-information .brand{
+    border-bottom: #ddd 1px solid;
+}
+/* item img */
+
+.prod-outlook .item-img .arrow{
+    font-size: 30px;
+    margin: 150px 20px;
+}
+
+.prod-outlook .item-img .prod-img img{
+    width: 300px;
+    margin: 50px 20px;
+}
+
+/* left*/
+.left{
+    width: 530px;
+}
+/* pay information */
+.pay-information .price strong{
+    font-size: 25px;
+    color: rgb(255, 0, 0);
+}
+
+.pay-information .price strike,
+.pay-information .price .discord{
+    padding: 10px 5px 0 10px;
+}
+
+.pay-information .prod-status p:last-child{
+    padding-left: 10px;
+}
+
+.pay-information .quantity .set ul{
+    margin-top: 10px;
+    padding: 0 15px 0 5px;
+}
+
+.pay-information .quantity .set ul li{
+    border: #ddd 1px solid;
+}
+
+.pay-information .quantity .set ul li p{
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.pay-information .quantity .add-cart i{
+    font-size: 30px;
+    padding: 10px 0 0 10px;
+    color: blue;
+}
+
+.pay-information .buy-1 .buy-btn{
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.pay-information .buy-1 .buy-btn:first-child{
+    background: red;
+}
+.pay-information .buy-1 .buy-btn:last-child{
+    background: green;
+    margin-left: 5px;
+}
+
+.pay-information .buy-2 .buy-btn{
+    background: yellow;
+    border-radius: 5px;
+}
+
+.pay-information .buy-2 .buy-btn .content strong,
+.pay-information .buy-2 .buy-btn .content p{
+    color: #000;
+}
+
+.pay-information .buy-2 .buy-btn:first-child{
+    padding: 0 38px;
+    margin-right: 5px;
+}
+
+.pay-information .buy-2 .buy-btn:last-child{
+    padding: 0 31px;
+}
+
+.pay-information .buy .buy-btn i{
+    font-size: 25px;
+    padding: 10px ;
+    border-right: #ddd solid 1px;
+    color: #fff;
+}
+
+.pay-information .buy .buy-btn .content{
+    text-align: center;
+    color: #fff;
+    padding: 0 10px 0 10px;
+}
+
+.pay-information .buy .buy-btn .content strong{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.pay-information .buy .buy-btn .content p{
+    margin: 0;
+}
+
+/* free ship */
+.free-ship{
+    border: #ddd 1px solid;
+    padding: 0 10px;
+    margin-top: 5px;
+}
+
+.free-ship i{
+    font-size: 25px;
+    margin-top: 25px;
+    margin-right: 5px;
+    color: red;
+}
+
+.free-ship p{
+    font-size: 15px;
+    width: 450px;
+}
+
+/* contact */
+.contact{
+    border: #ddd 1px solid;
+}
+
+.contact .commit p{
+    border-bottom: #ddd 1px solid;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.contact .hotline{
+    text-align: center;
+}
+
+.contact .details{
+    text-align: center;
+}
+
+.contact .details .show-less{
+    display: none;
+}
+
+.contact .address{
+    display: none;
+}
+
+.contact .address ul:first-child li{
+    width: 100px;
+}
+
+.contact .address ul:first-child li p{
+    font-weight: 600;
+}
+
+.contact .chat{
+    border-top: #ddd 1px solid;
+}
+
+.contact .chat i{
+    font-weight: 600;
+}
+
+/* right */
+.useful-information{
+    background-color: #fafafa;
+}
+
+.useful-information p{
+    margin: 5px;
+    padding: 5px;
+}
+
+.useful-information .info-title p{
+    font-size: 18px;
+    width: 250px;
+}
+
+.useful-information .info-option p{
+    border-bottom: #ddd solid 1px;
+}

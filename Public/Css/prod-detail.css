@@ -39,6 +39,7 @@
 
 .brand .item ul li{
     cursor: pointer;
+    display: flex;
 }
 
 /* prod-list-horizontal */

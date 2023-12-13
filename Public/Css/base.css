@@ -37,4 +37,8 @@ a {
     pointer-events: none;
 }
 
+.display-flex{
+    display: flex;
+}
+
 

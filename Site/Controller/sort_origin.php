@@ -22,7 +22,7 @@
             $condition .= " and  product.brand = '$selectedBrand'"; 
         }
         if($selectedCapacity){
-            $condition .= " and  `product-info`.dungtichtong BETWEEN $selectedCapacity"; 
+            $condition .= " and  `product-info`.dungtichsudong BETWEEN $selectedCapacity"; 
         }
         if($selectedModel){
             $condition .= " and  `product-info`.model = '$selectedModel'"; 
