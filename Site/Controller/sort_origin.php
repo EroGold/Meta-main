@@ -45,7 +45,7 @@
         if (mysqli_num_rows($result) > 0) {
             echo '<ul class="row row-cols-4">';
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '<li class="col">';
+                echo '<li data-prod_id="'.$row['prod_id'].'" class="col to-product">';
                 echo'<div class="flash-sale-product">';
     
                 echo'<div class="tragop">';

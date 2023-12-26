@@ -13,7 +13,7 @@
                                 <i class="fa-solid fa-bars"></i>
                             </div>
     
-                            <a href="">
+                            <a href="index.php">
                                 <img src="./Public/img/logo-web-meta.svg" alt="">
                             </a>
                         </div>

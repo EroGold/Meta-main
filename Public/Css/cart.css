@@ -1,0 +1,26 @@
+.cart-page-container{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 430px;
+    align-items: center;
+}
+
+.cart-page-container img{
+    width: 90px;
+}
+
+.cart-page-container span{
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.cart-page-container a{
+    margin: 20px 0;
+    padding: 20px 0  0 15px;
+    background: #da251c;
+    width: 156px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+}

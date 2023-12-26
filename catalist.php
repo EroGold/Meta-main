@@ -1,3 +1,8 @@
+<?php
+// Lấy lịch sử xem từ cookie (nếu có)
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +49,18 @@
 
             $(this).siblings().find('.checkbox').prop('checked', false);
 
-        });
+        })
+</script>
+
+<script>
+            $(document).ready(function () {
+                $('.to-product').click(function(){
+                    var productId = $(this).data('prod_id');
+
+                    window.location.href = 'product.php?prod_id=' + productId;
+                })
+
+            })
 </script>
     
 </html>

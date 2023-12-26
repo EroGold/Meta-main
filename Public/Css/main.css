@@ -87,7 +87,7 @@
 .search-box{
     position: absolute;
     top: 80px;
-    left: 268px;
+    left: 338px;
     width: 540px;
     height: 35px;
     background-color: #fff;
@@ -353,7 +353,7 @@ h2{
 }
 
 .hot-catalog .hot-catalog-container ul li{
-    width: 9%;
+    width: 8.9%;
     border: 1px solid #ddd;
     margin: 0;
     padding: 1px 5px;
@@ -888,6 +888,10 @@ footer{
 .manage{
     width: auto;
     margin: 10px 0 0 38px;
+}
+
+.manage-list .manage .title{
+    text-align: center;    
 }
 
 .manage .title span{
@@ -1472,4 +1476,8 @@ footer{
         font-size: 36px;
         font-weight: bold;
     }
+}
+
+.bw{
+    background-color: #fff;
 }

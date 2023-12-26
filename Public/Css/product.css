@@ -146,6 +146,7 @@
 /* contact */
 .contact{
     border: #ddd 1px solid;
+    margin-top: 5px;
 }
 
 .contact .commit p{
@@ -198,9 +199,312 @@
 
 .useful-information .info-title p{
     font-size: 18px;
-    width: 250px;
+    width: 200px;
 }
 
 .useful-information .info-option p{
     border-bottom: #ddd solid 1px;
+}
+
+/* similar */
+.si-header{
+    justify-content: space-between;
+}
+
+.si-header .si-title h2{
+    margin: 14px ;
+}
+
+.similar{
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.similar .similar-search{
+    margin: 14px;
+}
+
+.similar .similar-search .similar-input{
+    position: relative;
+}
+
+.similar .similar-search button{
+    height: 28px;
+    margin: 7px;
+    background: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+.similar .similar-search input{
+    width: 300px;
+    height: 28px;
+    margin-top: 5px;
+    border: 1px solid #fdb84f;
+    font-size: 14px;
+}
+
+.similar .similar-search span{
+    position: absolute;
+    top: 11px;
+    right: 8px;
+}
+
+.similar-item ul{
+    margin: 0 auto;
+}
+
+.similar-item ul li{
+    margin-bottom: 20px;
+}
+
+.similar-item ul li .flash-sale-product{
+    margin: 10px 20px;
+}
+
+/* Thong so ky thuat */
+
+.thongso-item{
+    background-color: #fff;    
+    width: 75%;
+}
+
+.thongso-item table tr{
+    border-bottom: solid #ddd 1px;
+}
+
+.thongso-item table tr td{
+    padding: 5px;
+    width: 75%;
+}
+
+/* suggest */
+.sugg-item ul li{
+    width: 24%;
+}
+
+/* rate */
+.rate-result{
+    width: 75%;
+    background-color: #fff;
+}
+.rate-outlook{
+    justify-content: center;
+    padding: 10px 0;
+    border-bottom: #ddd solid 1px;
+}
+
+.rate-point{
+    text-align: center;
+    padding: 10px 30px 0 0;
+}
+
+.rate-point .rate-star{}
+
+.rate-point .rate-star i{
+    overflow: hidden;
+    position: relative;
+}
+
+
+.rate-point .rate-star-percent{
+    position: absolute;
+    background-color: yellow;
+    width: 50%;
+    height: 20px;
+}
+
+
+.rate-point .rate-avg p{
+    margin: 0;
+}
+
+.rate-count ul li{
+    display: flex;
+    margin: 5px;
+}
+
+.rate-count ul li .count{
+    position: relative;
+    background-color: #ddd;
+    width: 100px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.rate-count ul li .count-percent{
+    background-color: yellow;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+}
+
+/* your comment */
+.comment{
+    background-color: #fff;
+    width: 75%;
+}
+
+.comment .comment-title{
+    font-weight: 600;font-size: 20px;
+}
+
+.comment .comment-title p{
+    margin-left: 10px;
+}
+
+.comment .your-rate p{
+    margin-left: 10px;
+}
+.comment .your-rate .your-rate-star ul{
+    margin-left: 150px;
+}
+
+.comment .your-rate .your-rate-star ul li{
+    text-align: center;
+    width: 50px;
+}
+
+.comment .your-rate .your-rate-star ul li i{
+    font-size: 30px;
+    color: orange;
+}
+
+.comment .your-rate .your-rate-star ul li i:hover{
+    color: yellow;
+}
+
+/* question */
+.question p{
+    margin: 0 0 0 10px;
+}
+.question .question-input textarea{
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: none;
+    position: relative;
+}
+
+.question .question-input .add-img{
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+    top: 2690px;
+    right: 1160px;
+}
+
+/* name-input */
+.question-input{
+    margin: 10px;
+    border: 1px solid #000;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.question-input .name-input{
+    border-top: #000 1px solid;
+}
+.name-input .option ul:first-child{
+    margin: 5px;
+}
+
+.name-input .option ul li{
+    margin: 0 5px 0 0;
+}
+
+.name-input .option ul li{
+    border: #000 solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.name-input input{
+    width: 210px;
+    height: 20px;
+    margin: 6px;
+
+}
+
+.name-input button{
+    float: right;
+    background: blue;
+    color: #fff;
+    padding: 5px 40px;
+    margin: 5px;
+}
+
+/* all comment */
+.all-comment{
+    background-color: #fff;
+    width: 72.6%;
+    padding-left: 30px;
+    padding-top: 10px;
+    height: 200px;
+}
+
+.all-comment .comment-filter ul li{
+    border-bottom: 3px solid #ddd;
+    margin-left: 10px;
+}
+
+.all-comment .comment-filter ul li:first-child{
+    margin-left: -10px;
+    font-weight: 600;
+    border-bottom: red 3px solid;
+}
+
+.user-question{
+    margin-top: 20px;
+}
+
+.user-question .user-name .name{
+    font-weight: 500;
+    color: #7371c4;
+    margin: 0 10px;
+}
+
+.user-question .user-name .rating{
+    color: orange;
+}
+
+.user-question .admin-answer{
+    background-color: #eeeeee;
+    margin: 10px;
+    padding: 10px;
+}
+
+.user-question .admin-answer p{
+    margin: 0;
+}
+
+.float-right-care-list{
+    float: right;
+    position: relative;
+    background-color: #fff;
+    right: 90px;
+}
+
+.float-right-care-list .care-title p{
+    font-size: 20px ;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.float-right-care-list .item-list{
+    width: 300px;
+}
+
+.float-right-care-list .item-img img{
+    width: 100px;
+}
+
+
+.float-right-care-list .item-list .item{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
 }

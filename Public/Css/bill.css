@@ -1,0 +1,89 @@
+.bill-left,
+.bill-right{
+    width: 50%;
+}
+
+.bill-left{
+    border-right: 1px solid #000;
+    padding: 5px;
+}
+
+.bill .bill-left .bill-title span,
+.bill .bill-right .bill-title span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bill .bill-left .input{
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.bill .bill-left .input .name{
+    margin-right: 40px;
+}
+
+.bill .bill-left .input .name span,
+.bill .bill-left .input .phone-number span{
+    font-size: 16px;
+}
+
+.bill .bill-left .input .name input,
+.bill .bill-left .input .phone-number input{
+    width: 270px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.bill .bill-left .input .address{
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.bill .bill-left .input .address select{
+    width: 190px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.bill .bill-left .input .address > input{
+    border-radius: 4px;
+    height: 30px;
+    width: 585px;
+    margin: 5px;
+}
+
+.bill .bill-left .pay-method .pay-opt{
+    border: 1px solid #ddd;
+    margin: 5px;
+    padding: 5px;
+}
+
+.bill .bill-left .pay-method > input{
+    width: 585px;
+    height: 30px;
+}
+
+.bill .bill-left .pay-method > button{
+    margin: 15px 220px;
+    width: 150px;
+    height: 30px;
+    color: #fff;
+    background: #0fa80f;
+}
+
+
+
+.bill .bill-right > ul > li{
+    border-bottom: #ddd 1px solid;
+    margin: 5px;
+}
+
+.bill .bill-right .bill-item{
+    margin-top: 10px;
+}
+
+.bill .bill-right .bill-item .item-img img{
+    width: 100px;
+}
