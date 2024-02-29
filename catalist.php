@@ -1,7 +1,3 @@
-<?php
-// Lấy lịch sử xem từ cookie (nếu có)
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">

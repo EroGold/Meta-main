@@ -441,6 +441,10 @@ h2{
     border-radius: 5px;
 }
 
+/* .flash-sale-product .thumb{
+    margin-top: 200px;
+} */
+
 .flash-sale-product .thumb img{
     height: auto;
     max-width: 100%;
@@ -465,7 +469,7 @@ h2{
 .trend-product-item .tragop{
     font-size: 12px;
     left: 150px;
-    bottom: 130px;
+    bottom: 230px;
     background-color: #ff9900;
     color: #fff;
     padding: 4px;
@@ -627,6 +631,7 @@ h2{
     text-align: center;
     left: 50px;
     bottom: -2px;
+    z-index: 1;
 }
 
 .sold-percent{
@@ -721,11 +726,10 @@ h2{
     vertical-align: top;
     margin: 5px;
     padding: 10px;
-    border: 1px solid #f1f1f1;
     display: inline-block;
     overflow: hidden;
     padding: 0;
-    margin: 0 14px;
+    margin: 0 16px;
 }
 
 .trend-prod-container ul{
@@ -767,13 +771,14 @@ h2{
 /* danh sach thuong hieu */
 .thuonghieu-list{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .thuonghieu-list .thuonghieu-item{
     display: flex;
     flex-direction: column;
     padding: 10px 15px;
-    width: 80px;
+    width: 130px;
     text-align: center;
     display: inline-block;
     margin: 3px 3px 3px 0;
@@ -1480,4 +1485,245 @@ footer{
 
 .bw{
     background-color: #fff;
+}
+
+/* modal */
+.add-notice{
+    .modal{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+
+    }
+    
+    .modal-warp{
+        width: 35%;
+        background-color: #fff;
+        border-radius: 5px;
+        margin: 240px auto;
+    }
+    
+    .modal-warp{
+        .add-success{
+            color: rgb(50, 185, 124);
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        .add-success p{
+            margin-top: 0;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+        
+        .item .item-img{
+            width: 100px;
+            height: 100px;
+        }
+        
+        .item .item-img img{
+            width: 90%;
+        }
+        
+        .item .item-name{
+            width: 60%;
+    }
+    
+        .item .item-name p{
+            font-size: 16px;
+        }
+    
+        .btn{
+            display: flex;
+            justify-content: space-evenly;
+            padding-bottom: 10px;
+        }
+    
+        .btn a{
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 5px 60px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    
+        .btn a:last-child{
+            background-color: rgb(240, 31, 31);
+            color: #fff;
+        } 
+    }
+}
+
+.cart-modal{
+    .modal{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        z-index: 9999;
+    }
+
+    .modal-warp{
+        width: 40%;
+        border-radius: 5px;
+        background-color: #fff;
+        margin: 80px auto;
+        overflow: scroll;
+    }
+
+    .modal-warp{
+        .cart-modal-header{
+            font-size: 20px;
+            justify-content: space-between;
+            padding: 5px;
+            background-color: #ddd;
+            font-weight: 600;
+        }
+
+        .cart-modal-header p{
+            margin: 0;
+            padding: 0 5px;
+        }
+
+        .cart-item .choose-all{
+            display: flex;
+        }
+
+        .cart-item .choose-all i{
+            margin: 0 0 5px 5px;
+        }
+
+        .cart-item .choose-all p{
+            margin: 7px;
+            font-size: 16px;
+        }
+
+        .cart-item{
+            .item{
+                display: flex;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .item{
+                .item-img img{
+                    width: 100px;
+                }
+
+                .item-info{
+                    width: 90%;
+                }
+
+                .item-info p{
+                    margin: 0;
+                }
+
+                .item-count{
+                    .set ul{
+                        margin-top: 10px;
+                        padding: 0 15px 0 5px;
+                    }
+
+                    .set button{
+                        font-size: 12px;
+                        padding: 5px 10px;
+                        margin: 0;
+                    }
+
+                    .set #quantity-count{
+                        width: 30px;
+                        text-align: center;
+                    }
+
+                    .item-del{
+                        margin: 10px;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .item-del p{
+                        margin: 0;
+                    }
+                }
+            }
+
+            .total-price{
+                margin: 5px;
+                font-size: 20px;
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            .btn a{
+                width: 400px;
+                margin: 5px 0;
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
+
+        .viewed{
+            .header {
+                font-size: 20px;
+                justify-content: space-between;
+                padding: 5px;
+                background-color: #ddd;
+                font-weight: 600;
+            }
+            
+            .header p{
+                margin: 0;
+            }
+
+            .item{
+                position: relative;
+                display: flex;
+                border-bottom: 1px solid #ddd;
+                margin-top: 5px;
+            }
+
+            .item{
+                .item-img img{
+                    width: 100px;
+                }
+
+                .item-discount{
+                    position: absolute;
+                    top: 0px;
+                    left: 60px;
+                    background: red;
+                    color: #fff;
+                    border-radius: 5px;
+                }
+
+                .item-discount p{
+                    margin: 5px;
+                }               
+            }
+
+            .item p{
+                margin: 5px;
+            }
+
+            .item button{
+                position: absolute;
+                height: 40px;
+                margin-top: 70px;
+                width: 140px;
+                background: red;
+                color: #fff;
+                font-weight: 600;
+                right: 10px;
+            }
+        }
+    }
+
 }

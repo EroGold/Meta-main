@@ -1,3 +1,5 @@
+
+
 <div class="top-ads">
         <a href="">
             <img src="./asset/img/Banner-dien-may-1236x60-a.png" style="height: 60px; width: 1236px;" alt="">
@@ -20,139 +22,70 @@
     
                         <div class="cart-and-account">
                             <!-- Account -->
-                            <a href="Login.php" class="block account-btn">
-                                <div class="login">
-                                    <i class="fa-solid fa-user"></i>
-                                    <span class="top-title">
-                                        <span class="txt-login">
-                                            Đăng nhập
-                                        </span>
+                            
+                                    <?php 
+                                    session_start();
+                                        if(isset($_SESSION['username'])){
+                                            $username = $_SESSION['username'];
+                                            echo '<a href="profile.php" class="block account-btn">';
+                                            echo '<div class="login">';
+                                            echo '<i class="fa-solid fa-user"></i>';
+                                            echo '<span class="top-title">';
+                                            echo '<span class="txt-login">';
+                                            echo    "Xin chào,<strong> $username </strong>";
+                                            echo "</span>";
     
-                                        <span class="txt-login-more">
-                                            Đã xem
-                                            <b>1</b>
-                                            sản phẩm
-                                        </span>
-    
-                                        <div class="acc-hover-container hover">
-                                            <div class="up-arrow">
-                                                <div class="outer">
-                                                    <div class="inner">
-                                                        <span class="acc-hover">
-                                                            Tra cứu đơn hàng
-                                                        </span>
-                                                        <span class="acc-hover">
-                                                            Lịch sử mua hàng
-                                                        </span>
-                                                        <span class="acc-hover">
-                                                            Lấy mã khuyến mãi
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </span>
-                                </div>
-                            </a>
-                            <!-- Cart -->
-                            <div class="block cart">
-                                <div class="cart-container">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <span class="top-title">
-                                        Giỏ hàng
-                                    </span>
-                                </div>
-    
-                                <div class="cart-popup-box hover">
-                                    <div class="cart-holder">
-                                        <div class="incart-header">
-                                            <div class="incart-header-title">
-                                                <span class="incart-header-icon">
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </span>
-                                                Giỏ hàng
-                                                <a>
-                                                    <span class="incart-header-close">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                        Đóng
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-    
-                                        <div class="incart-empty">
-                                            <div class="incart-empty-img">
-                                                <img src="./asset/img/gio-hang-rong.png" alt="">
-                                            </div>
-    
-                                            <div class="incart-empty-txt">
-                                                Chưa có sản phẩm nào trong giỏ hàng của bạn!
-                                            </div>
-                                        </div>
+                                            echo '<span class="txt-login-more">';
+                                            echo    "Có";
+                                            echo    "<b> 1 </b>";
+                                            echo    "sản phẩm trong giỏ";
+                                            echo "</span>";
+                                            echo '<div class="acc-hover-container hover">';
+                                            echo '<div class="up-arrow">';
+                                            echo    '<div class="outer">';
+                                            echo        '<div class="inner">';
+                                            echo            '<span class="acc-hover">';
+                                            echo                "Tra cứu đơn hàng";
+                                            echo            "</span>";
+                                            echo            '<span class="acc-hover">';
+                                            echo                "Lịch sử mua hàng";
+                                            echo            "</span>";
+                                            echo            '<span class="acc-hover">';
+                                            echo                "Lấy mã khuyến mãi";
+                                            echo        "</span>";
+                                            echo        "</div>";
+                                            echo    "</div>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "</span>";
+                                            echo "</div>";
+                                            echo "</a>";
+                                        }else{
+                                            echo '<a href="Login.php" class="block account-btn">';
+                                            echo '<div class="login">';
+                                            echo '<i class="fa-solid fa-user"></i>';
+                                            echo '<span class="top-title">';
+                                            echo '<span class="txt-login">';
+                                            echo    "Vui lòng đăng nhập";
+                                            echo "</span>";
+                                            echo "</span>";
+                                            echo "</div>";
+                                            echo "</a>";
+                                        };
                                         
-                                        <div class="history-box cart">
-                                                <div class="history-title">
-                                                    Sản phẩm đã xem
-                                                </div>
-    
-                                                <div class="history-product">
-                                                    <div class="history-inner">
-                                                        <ul class="viewed-product-list">
-                                                            <li class="viewed-product">
-                                                                <div class="viewed-left">
-                                                                    <div class="viewed-img">
-                                                                        <a href="">
-                                                                            <img src="./asset/img/may-lanh-di-dong-casper-pc-09tl33-a.jpg" alt="">
-                                                                        
-                                                                            <div class="product-discount">
-                                                                                <span>-30%</span>
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-    
-                                                                    <div class="viewed-deleted">
-                                                                        <a class="viewed-product-remove">
-                                                                            <i class="fa-regular fa-trash-can"></i>
-                                                                            Xóa
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-    
-                                                                <div class="viewed-right">
-                                                                    <div class="viewed-prod-name">
-                                                                        <a href="">
-                                                                            Máy lạnh di động Casper PC-09TL33
-                                                                        </a>
-                                                                    </div>
-    
-                                                                    <div class="viewed-prod-manuf">
-                                                                        <a href="">
-                                                                            Casper
-                                                                        </a>
-                                                                    </div>
-    
-                                                                    <div class="viewed-prod-price">
-                                                                        5.550.000đ
-                                                                    </div>
-    
-                                                                    <div class="viewed-prod-timer">
-                                                                        16h39' 14/08/2023
-                                                                    </div>
-                                                                </div>
-    
-                                                                <div class="viewed-prod-buy">
-                                                                    <a href="">
-                                                                        Cho vào giỏ
-                                                                    </a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                        </div>
+                                    ?>
+                                    
+                            <!-- Cart -->
+                                <div class="block cart">
+                                    <div class="cart-container">
+                                        <a href="" class="open-cart">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            <span class="top-title">
+                                                Giỏ hàng
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
                             <!-- support -->
                             <div class="block support-box">
                                 <div class="support-container">
@@ -248,3 +181,24 @@
             </div>
         </div>
     </header>
+    <script>
+        $(document).ready(function(e){
+            $('.open-cart').click(function(){
+                event.preventDefault();
+
+                $('.cart-modal .modal').css({
+                    "display": "flex"
+                })
+
+                $.ajax({
+                    url: "Site/Controller/load_cart.php",
+                    method: "GET",
+                    success: function(response) {
+                        $('#modalContent').html(response);
+                    }
+                })
+            })
+        })
+    </script>
+
+    <?php include 'modal-cart.php' ?>

@@ -87,3 +87,7 @@
 .bill .bill-right .bill-item .item-img img{
     width: 100px;
 }
+
+i#caution{
+    display: none;
+}

@@ -12,7 +12,7 @@
         echo '<ul>';
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<li>';
-            echo '<a href="?">';
+            echo '<a href="?danhmuc='.$row['danhmuc_id'].'">';
             echo '<div class="discount">';
             echo '<span>-42%</span>';
             echo '</div>';

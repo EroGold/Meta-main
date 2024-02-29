@@ -58,10 +58,15 @@
     border: #ddd 1px solid;
 }
 
-.pay-information .quantity .set ul li p{
+.pay-information .quantity .set ul button{
     font-size: 12px;
     padding: 5px 10px;
     margin: 0;
+}
+
+.pay-information .quantity .set #quantity-count{
+    width: 30px;
+    text-align: center;
 }
 
 .pay-information .quantity .add-cart i{
@@ -430,12 +435,13 @@
 
 }
 
-.name-input button{
+.name-input input#submit{
     float: right;
     background: blue;
     color: #fff;
     padding: 5px 40px;
     margin: 5px;
+    height: auto;
 }
 
 /* all comment */
@@ -444,7 +450,8 @@
     width: 72.6%;
     padding-left: 30px;
     padding-top: 10px;
-    height: 200px;
+    padding-bottom: 20px;
+    height: auto;
 }
 
 .all-comment .comment-filter ul li{

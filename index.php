@@ -41,3 +41,14 @@
     <!-- <script src="Public/Js/index.js"></script> -->
 </body>
 </html>
+
+<script>
+            $(document).ready(function () {
+                $('.to-product').click(function(){
+                    var productId = $(this).data('prod_id');
+
+                    window.location.href = 'product.php?prod_id=' + productId;
+                })
+
+            })
+</script>

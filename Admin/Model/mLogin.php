@@ -19,11 +19,13 @@
         if ($password == $row["password"]) {
             if($row["role"] == "admin"){
                 session_start();
+                $_SESSION["username"] = $row['username'];
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["username"] = $row['username'];
                 header("Location: http://localhost/Meta-main/manager.php");     
             }else{
                 session_start();
+                $_SESSION["username"] = $row['username'];
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["username"] = $row['username'];
                 header("Location: http://localhost/Meta-main/index.php");            

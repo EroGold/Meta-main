@@ -32,11 +32,11 @@
             echo    '<span> -' . $row['discount'] . '%</span>';
             echo'</div>';
 
-            echo'<div class="thumb">';
+            echo'<div class="thumb" style="margin-top: 200px;">';
             echo    '<img src="./asset/img/tu-lanh-casper-2-cua-ngan-dong-tren-240l-rt-258vg-3.jpg" alt="">';
             echo'</div>';
 
-            echo'<div class="name">';
+            echo'<div class="name" style="width: 200px; height: 40px; overflow: hidden; text-overflow: ellipsis; margin-left: 10px;">';
             echo    '<a href="">'.
                         $row['info'];
             echo    '</a>';
@@ -48,8 +48,8 @@
 
             echo'<div class="countdown">';
             echo    '<div class="count-left">';
-            echo        '<strong>'. $row['price'] .'đ </strong>';
-            echo        '<strike>'. $discounted_price .'đ </strike>';
+            echo        '<strong>'. number_format($row['price'], 0, ',', '.') .'đ </strong>';
+            echo        '<strike>'. number_format(round(($row['price'] * 100) / (100 - $row['discount']) , -5), 0, ',', '.') .'đ </strike>';
             echo    '</div>';
             echo    '<div class="count-right">';
             echo        '<div class="flash-sale-box">';

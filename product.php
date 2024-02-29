@@ -7,8 +7,6 @@
 
     $productId = isset($_GET['prod_id']) ? $_GET['prod_id'] : 0 ;
 
-    
-
     $sql = "SELECT * FROM product
     INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
     WHERE product.prod_id = $productId";
@@ -57,7 +55,9 @@
         'productImage' => $productImage,
         'productPrice' => $productPrice,
         'productTraGop' => $productTraGop,
-        'productDiscount' => $productDiscount
+        'productDiscount' => $productDiscount,
+        'productBrand' => $productBrand,
+        'timestamp' => time()
     );
     
     // Thêm sản phẩm mới vào đầu mảng lịch sử xem
@@ -72,6 +72,29 @@
     // Cập nhật cookie với lịch sử xem mới
     setcookie('viewedProducts', json_encode($viewedProducts), time() + 30 * 24 * 60 * 60); // 30 ngày là thời gian sống của cookie
     }
+    
+    // if(isset($_POST['add_to_cart']) && ($_POST['add_to_cart'])){
+      
+    //     $_SESSION['cart'] = [];
+    //     $prodId = $_POST['prodId'];
+    //     $prodName = $_POST['prodName'];
+    //     $prodDiscount = $_POST['prodDiscount'];
+    //     $prodPrice = $_POST['prodPrice'];
+    //     $soluong = $_POST['soluong'];
+    //     $prodImg = $_POST['prodImg'];
+
+    //     $cart = [
+    //         'prodId' => $prodId,
+    //         'prodName' => $prodName,
+    //         'prodDiscount' => $prodDiscount,
+    //         'prodPrice' => $prodPrice,
+    //         'soluong' => $soluong,
+    //         'prodImg' => $prodImg,
+    //     ];
+    //         $_SESSION['cart'][$prodId] = $cart;
+    // }
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +119,7 @@
 
     <?php include './Site/View/prod-link.php'; ?>
 
+    
     <section>
         <div class="warp">
             <div class="prod-pay display-flex">
@@ -129,13 +153,60 @@
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
+                            <?php
+                                $connection = mysqli_connect('localhost','root','','meta');
+
+                                if (!$connection) {
+                                    die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                                }
+
+                                $sql ="SELECT ROUND(AVG(rate), 1) AS rate_avg FROM comment WHERE prod_id = $productId AND rate != 0";
+                                $result = $connection->query($sql);
+
+                                if (!$result) {
+                                    die('Error: ' . mysqli_error($connection));
+                                }
+
+                                if ($result->num_rows > 0) {
+                                    // Lấy kết quả
+                                    $row = $result->fetch_assoc();
+                                    $rateAVG = $row["rate_avg"];
+                                    
+                                    echo '<i class="rate_avg">'. $rateAVG .'</i>';
+                                } else {
+                                    echo "Chưa có bình chọn nào.";
+                                }
+                                
+
+                            ?>
+
+                                <?php 
+                                    $connection = mysqli_connect('localhost','root','','meta');
+
+                                    if (!$connection) {
+                                        die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                                    }
+
+                                    $sql = "SELECT COUNT(rate) AS rate_count FROM comment WHERE prod_id = $productId AND rate != 0";
+                                    $result = $connection->query($sql);
+
+                                    if (!$result) {
+                                        die('Error: ' . mysqli_error($connection));
+                                    }
+
+                                    if ($result->num_rows > 0) {
+                                        // Lấy kết quả
+                                        $row = $result->fetch_assoc();
+                                        $rateCount = $row["rate_count"];
+                                        
+                                        echo '<i class="rate_avg" style="color: #0071c4;">( '. $rateCount .' Bình chọn )</i>';
+                                    } else {
+                                        echo "Chưa có bình luận nào.";
+                                    }
+                                ?>
                         </div>
         
-                        <div class="evaluate">
-                            <div class="count">
-                                (116 đánh giá)
-                            </div>
-                        </div>
+                        
                     </div>
     
                     <div class="brand display-flex">
@@ -169,31 +240,34 @@
                                     };
                                     ?></p>
                             </div>
-            
+
                             <div class="quantity display-flex">
                                 <p>Chọn số lượng:</p>
                                 <div class="set">
                                     <ul class="display-flex">
-                                        <li class="apart">
-                                            <p>-</p>
-                                        </li>
-                                        <li class="count">
-                                            <p>1</p>
-                                        </li>
-                                        <li class="plus">
-                                            <p>+</p>
-                                        </li>
+                                        <button class="decrement">-</button>
+                                        
+                                        <input type="text" name="quantity" id="quantity-count" value="1">
+                                        
+                                        <button class="increment">+</button>
                                     </ul>
                                 </div>
-            
-                                <div class="add-cart display-flex">
+                            
+                                <div class="add-cart display-flex" >
+
                                     <p>Cho vào giỏ</p>
-                                    <i class="fa-solid fa-cart-plus"></i>
+                                    
+                                    <span  class="fa-solid fa-cart-plus addToCart" 
+                                     data-soluong="1" data-id="<?php echo $productId ?>" 
+                                     data-name="<?php echo $productName ?>"
+                                      data-discount="<?php echo $productDiscount ?>"
+                                      data-price="<?php echo $productPrice ?>" 
+                                      data-img="<?php echo $productImage ?>">
+                                    </span>
                                 </div>
-        
                             </div>
                             <div class=" buy buy-1 display-flex">
-                                <div class="buy-btn display-flex checkout">
+                                <div class="buy-btn display-flex">
                                     <i class="fa-solid fa-cart-shopping"></i>
                                     <div class="content">
                                         <strong>Đặt mua</strong>
@@ -819,8 +893,56 @@
 
                     <div class="rate-avg">
                         <p>Đánh giá trung bình</p>
-                        <p>(Có 116 đánh giá)</p>
-                        <h3>4.8</h3>
+                        <?php 
+                                    $connection = mysqli_connect('localhost','root','','meta');
+
+                                    if (!$connection) {
+                                        die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                                    }
+
+                                    $sql = "SELECT COUNT(rate) AS rate_count FROM comment WHERE prod_id = $productId AND rate != 0";
+                                    $result = $connection->query($sql);
+
+                                    if (!$result) {
+                                        die('Error: ' . mysqli_error($connection));
+                                    }
+
+                                    if ($result->num_rows > 0) {
+                                        // Lấy kết quả
+                                        $row = $result->fetch_assoc();
+                                        $rateCount = $row["rate_count"];
+                                        
+                                        echo '<p>( '. $rateCount .' Bình chọn )</p>';
+                                    } else {
+                                        echo "Chưa có bình luận nào.";
+                                    }
+                                ?>
+                        <?php
+                                $connection = mysqli_connect('localhost','root','','meta');
+
+                                if (!$connection) {
+                                    die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                                }
+
+                                $sql ="SELECT ROUND(AVG(rate), 1) AS rate_avg FROM comment WHERE prod_id = $productId AND rate != 0";
+                                $result = $connection->query($sql);
+
+                                if (!$result) {
+                                    die('Error: ' . mysqli_error($connection));
+                                }
+
+                                if ($result->num_rows > 0) {
+                                    // Lấy kết quả
+                                    $row = $result->fetch_assoc();
+                                    $rateAVG = $row["rate_avg"];
+                                    
+                                    echo '<h3>'. $rateAVG .'</h3>';
+                                } else {
+                                    echo "Chưa có bình chọn nào.";
+                                }
+                                
+
+                            ?>
                     </div>
                 </div>
 
@@ -831,6 +953,9 @@
                             <div class="count">
                                 <div class="count-percent"></div>
                             </div>
+                            <?php 
+                                
+                            ?>
                         </li>
                         <li>
                             4<i class="fa-solid fa-star"></i>
@@ -870,62 +995,78 @@
                 <p>Chia sẻ nhận xét của bạn</p>
             </div>
 
-            <div class="your-rate display-flex">
-                <p>Đánh giá của bạn về sản phẩm</p>
-                <div class="your-rate-star">
-                    <ul class="display-flex">
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <p>Không thích</p>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <p>Tạm được</p>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <p>Bình thường</p>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <p>Hài lòng</p>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <p>Tuyệt vời</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+           
 
             <div class="question">
                 <p>Bạn đang băn khoăn cần tư vấn? Vui lòng để lại số điện thoại hoặc lời nhắn, META sẽ liên hệ trả lời bạn sớm nhất.</p>
-                <div class="question-input">
-                    <form action="add_comment.php" method="post">
-                        <textarea class="txt-input" id="txt-question" placeholder="Nhập câu hỏi / bình luận / nhận xét tại đây..."></textarea>
-                        <input type="hidden" name="product-id" value="<?php echo $productId ?>">
-                        <div class="name-input">
-                            <div class="option">
-                                <ul class="display-flex">
-                                    <li>
-                                        Chất lượng sản phẩm tuyệt vời
+                    <form id="commentForm" action="Site/Controller/add_comment.php" method="POST">
+                        <div class="your-rate display-flex">
+                            <p>Đánh giá của bạn về sản phẩm</p>
+                            <div class="your-rate-star">
+                                <input type="hidden" id="rate-point" name="rate-point" value="0">
+                                <ul class="display-flex" >
+                                    <li class="rate-star" value="1">
+                                        <i class="fa-solid fa-star"   ></i>
+                                        <p>Không thích</p>
                                     </li>
-                                    <li>
-                                        META phục vụ rất tốt 
+                                    <li class="rate-star" value="2">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>Tạm được</p>
                                     </li>
-                                    <li>
-                                        Đóng gói sản phẩm đẹp và chắc chắn
+                                    <li class="rate-star" value="3">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>Bình thường</p>
+                                    </li>
+                                    <li class="rate-star" value="4">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>Hài lòng</p>
+                                    </li>
+                                    <li class="rate-star" value="5">
+                                        <i class="fa-solid fa-star"></i>
+                                        <p>Tuyệt vời</p>
                                     </li>
                                 </ul>
                             </div>
-    
-                            <input type="text" placeholder="Nhập tên của bạn">
-    
-                            <button>Gửi đánh giá </button>
                         </div>
-                    </form>
-                
-                </div>
+                        <div class="question-input">
+
+                            <textarea class="txt-input" id="comment" name="comment" placeholder="Nhập câu hỏi / bình luận / nhận xét tại đây..."></textarea>
+                            <input type="hidden" id="prod_id" name="prod_id" value="<?php echo $productId ?>">
+                            <div class="name-input">
+                                <div class="option">
+                                    <ul class="display-flex">
+                                        <li>
+                                            Chất lượng sản phẩm tuyệt vời
+                                        </li>
+                                        <li>
+                                            META phục vụ rất tốt 
+                                        </li>
+                                        <li>
+                                            Đóng gói sản phẩm đẹp và chắc chắn
+                                        </li>
+                                    </ul>
+                                </div>
+        
+                                <input type="text" id="name" value="<?php 
+                                    if(isset($_SESSION['username'])){
+                                        $username = $_SESSION['username'];
+                                        echo $username;
+                                    }
+                                ?>" placeholder="Nhập tên của bạn">
+                                <input type="hidden" id="user_id" name="user_id" value="<?php 
+
+                                    if(isset($_SESSION['user_id'])){
+                                        $userId = $_SESSION['user_id'];
+                                        echo $userId;
+                                    }
+                                ?>">
+                                                            
+                                <button type="submit" class="comm-submit">
+                                    Gửi bình luận 
+                                </button> 
+                        </div>
+                        </div>
+                    </form>                
             </div>
         </div>
         <div class="all-comment">
@@ -940,7 +1081,7 @@
                 </ul>
             </div>
 
-            <div class="user-question">
+            <div class="user-question" id="comments">
                 <ul>
                     <?php 
                         $connection = mysqli_connect('localhost','root','','meta');
@@ -948,6 +1089,9 @@
                         if (!$connection) {
                             die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                         }
+
+                        $product_id = isset($_GET['prod_id']) ? $_GET['prod_id'] : (isset($_POST['product_id']) ? $_POST['product_id'] : 0);
+
 
                         $sql ="SELECT * FROM product
                             INNER JOIN comment ON product.`prod_id` = comment.`prod_id`
@@ -959,8 +1103,8 @@
                         }
 
                         if (mysqli_num_rows($result) > 0) {                            
+                            echo '<li>';
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<li>';
                                 echo '<div class="user-name display-flex">';
                                 echo '<div class="small-avatar">';
                                 echo '<img src="'. $row['avatar'] .'" alt="">';                            ;
@@ -977,19 +1121,16 @@
                                 echo '<i class="fa-solid fa-star"></i>';
                                 echo '<i class="fa-solid fa-star"></i>';
                                 echo '</div>';
+                                
                                 echo '</div>';
 
                                 echo '<div class="ques-content">';
                                 echo '<p>'. $row['comment-text'] .'</p>';
                                 echo '</div>';
 
-                                echo '<div class="admin-answer">';
-                                echo '<strong>META</strong>';
-                                echo '<p>'. $row['answer'] .'</p>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</li>';
+                                
                             }
+                            echo '</li>';
                         }else{
                             echo "Chưa có bình luận nào ";
                         }
@@ -997,7 +1138,7 @@
                         $connection->close();
                     ?>
                 </ul>
-        </div>
+            </div>
     </div>
 </section>
 <!-- lich su -->
@@ -1152,24 +1293,156 @@
 <?php include './Site/View/camket.php';?>
 
 <?php include './Site/View/footer.php' ?>
+
+<section>
+    <div class="add-notice">
+        <div class="modal">
+            <div class="modal-warp">
+                <div class="add-success display-flex">
+                    <div class="success-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <p>sản phẩm đã được thêm vào giỏ hàng</p>
+                </div>
+    
+                <div class="item display-flex">
+                    <div class="item-img">
+                        <img src="<?php echo $productImage ?>" alt="">
+                    </div>
+    
+                    <div class="item-name">
+                        <p><?php echo $productName ?></p>
+                    </div>
+                </div>
+                
+                <div class="btn">
+                    <a href="" class="close-modal">Tiếp tục mua sắm</a>
+    
+                    <a  href="" class="open-cart">Xem giỏ hàng</a>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</section>
+<?php include './Site/View/modal-cart.php' ?>
 </body>
+                                        
+<script>
+    $(document).ready(function(){
+            $('.addToCart').click(function(e){
+            e.preventDefault();
+            $('.add-notice .modal').show();
+
+            var soluong = $(this).data('soluong');
+            var prodId = $(this).data('id');
+            var prodName = $(this).data('name');
+            var prodDiscount = $(this).data('discount');
+            var prodPrice = $(this).data('price');
+            var prodImg = $(this).data('img');
+
+            $.ajax({
+                url: 'Site/Controller/add_cart.php',
+                type: 'POST',
+                data: {soluong: soluong, id: prodId, name: prodName, discount: prodDiscount, price: prodPrice, img: prodImg},
+
+                success:function(response){
+                    $('#modalContent').html(response);
+
+                }
+            })
+            
+        })
+
+       
+    })
+
+    
+</script>
 <script>
             $(document).ready(function () {
                 $('.to-product').click(function(){
                     var productId = $(this).data('prod_id');
 
                     window.location.href = 'product.php?prod_id=' + productId;
-                })
+                });
 
-            })
+            });
 
             $(document).ready(function () {
-                $('.checkout').click(function(){
+                $('#checkout').click(function(){
                     var productId = $('.to-product').data('prod_id');
 
                     window.location.href = 'bill.php?prod_id=' + productId;
-                })
+                });
 
-            })
+            });
+
+        
 </script>
+
+
+
+<script>
+    $(document).ready(function(){
+            $('.comm-submit').click(function(){
+                event.preventDefault();
+
+                var prod_id = $('#prod_id').val();
+                var user_id = $('#user_id').val();
+                var comment = $('#comment').val();
+
+                $.ajax({
+                    url: 'Site/Controller/add_comment.php',
+                    type: 'POST',
+                    data: {prod_id: prod_id, user_id: user_id, comment: comment},
+                    success:function(response){
+                        $('#comments').html(response);
+                    },
+                    error:function(){
+                        alert("ERROR");
+                    }
+                });
+            });
+        });
+</script>
+
+<script>
+    $(document).ready(function() {
+        var quantityInp = $('#quantity-count')
+        var quantityVal = parseInt(quantityInp.val());
+
+        $('.increment').click(function() {
+        quantityVal++;
+        quantityInp.val(quantityVal);
+        });
+
+        $('.decrement').click(function() {
+        if (quantityVal > 1) {
+            quantityVal--;
+            quantityInp.val(quantityVal);
+        }
+        });
+
+       
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        var rateInp = $('#rate-point')
+
+        $('.rate-star').click(function(){
+            var rateVal = $(this).val();
+
+            rateInp.val(rateVal);
+
+            $('.rate-star i').style.color = "yellow"
+        })
+    })
+</script>
+
+
 </html>
+
+

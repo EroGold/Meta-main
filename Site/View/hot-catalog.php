@@ -2,7 +2,7 @@
         <div class="warp">
             <div class="hot-catalog">
                 <div class="hot-catalog-title">
-                    <img src="./asset/img/hot-category.png" alt="">
+                    <img src="./Public/img/hot-category.png" alt="">
                     <h2>Danh mục nổi bật</h2>
                 </div>
 

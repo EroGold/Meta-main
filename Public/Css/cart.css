@@ -2,8 +2,9 @@
     background: #fff;
     display: flex;
     flex-direction: column;
-    padding: 20px 430px;
+    padding: 20px 0;
     align-items: center;
+    overflow: hidden;
 }
 
 .cart-page-container img{

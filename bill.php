@@ -1,30 +1,3 @@
-
-<?php 
-    $connection = mysqli_connect('localhost','root','','meta');
-
-    if (!$connection) { 
-        die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
-    }
-
-    $productId = isset($_GET['prod_id']) ? $_GET['prod_id'] : 0 ;
-
-    $sql = "SELECT * FROM product
-    INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
-    WHERE product.prod_id = $productId";
-    $result = $connection->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $productName = $row['info'];
-        $productPrice = $row['price'];
-        $productDiscount = $row['discount'];
-
-    }
-
-    $connection->close();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,19 +53,73 @@
                             </span>
 
                             <div class="display-flex">
-                                <select name="" id="">
-                                    <option value="Hà Nội">Hà Nội</option>
-                                    <option value="Đà Nẵng">Đà Nẵng</option>
-                                    <option value="TP Huế">TP Huế</option>
-                                    <option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
+                                <select name="city" id="city" placeholder="Thành phố">
+                                    <?php 
+                                        $conn = mysqli_connect("localhost","root","","meta");
+
+                                        // Kiểm tra kết nối
+                                        if (!$conn) {
+                                            die("Kết nối thất bại: " . mysqli_connect_error());
+                                        }
+                                    
+                                        $sql = "SELECT * FROM city";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                                echo '<option value="none" selected>Thành phố </option>';
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo '<option value="'. $row['city_id'] .'" value-city_id="city-'.$row['city_id'] .'" >'. $row['city-name'] .'</option>';
+                                            }
+                                        } else {
+                                            echo "Không tìm thấy sản phẩm phù hợp với điều kiện tìm kiếm.";
+                                        }
+                                    ?>
                                 </select>
 
-                                <select name="" id="">
-                                    <option value="">Quận Long Biên</option>
+                                <select name="district" id="district" disabled>
+                                <?php 
+                                        $conn = mysqli_connect("localhost","root","","meta");
+
+                                        // Kiểm tra kết nối
+                                        if (!$conn) {
+                                            die("Kết nối thất bại: " . mysqli_connect_error());
+                                        }
+                                    
+                                        $sql = "SELECT * FROM district";
+                                        $result = $conn->query($sql);
+                                            
+                                        if ($result->num_rows > 0) {
+                                                echo '<option value="none" selected>Quận/huyện</option>';
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo '<option value="'. $row['district_id'] .'" value-city="'.$row['city_id'] .'" >'. $row['district_name'] .'</option>';
+                                            }
+                                        } else {
+                                            echo "Không tìm thấy sản phẩm phù hợp với điều kiện tìm kiếm.";
+                                        }
+                                    ?>
                                 </select>
                                 
-                                <select name="" id="">
-                                    <option value="">Phường Ngọc Thụy</option>
+                                <select name="province" id="province" disabled>
+                                <?php 
+                                        $conn = mysqli_connect("localhost","root","","meta");
+
+                                        // Kiểm tra kết nối
+                                        if (!$conn) {
+                                            die("Kết nối thất bại: " . mysqli_connect_error());
+                                        }
+                                    
+                                        $sql = "SELECT * FROM province";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                                echo '<option value="none" selected>Phường/xã</option>';
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo '<option value=" '. $row['province_id'] .'"  value-district="'.$row['district_id'].'" >'. $row['province_name'] .'</option>';
+                                            }
+                                        } else {
+                                            echo "Không tìm thấy sản phẩm phù hợp với điều kiện tìm kiếm.";
+                                        }
+                                    ?>
                                 </select>
                             </div>
 
@@ -138,12 +165,14 @@
                                 </ul>
 
                                 <input type="text" placeholder="Để lại lời nhắn cho Meta(nếu có)">
-                            
-                                <button><i class="fa-solid fa-cart-shopping"></i> Gửi đơn hàng</button>
+                                
+                                <i id="caution">Vui lòng nhập đầy đủ thông tin</i>
+                                <button class="submit"><i class="fa-solid fa-cart-shopping"></i> Gửi đơn hàng</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
     
                 <div class="bill-right">
                     <div class="bill-title">
@@ -156,42 +185,52 @@
                         <span>Chọn tất cả</span>
                     </div>
 
-                    <ul>
-                        <li>
+                    <!-- <ul> -->
+                        <span>
+                        <?php
+                   
+                   if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                       echo '<ul>';
+                       foreach ($_SESSION['cart'] as $prodId => $cart) {
+                            echo'<li>
                             <div class="bill-item display-flex pay-information">
-                                <input type="checkbox">
-                                <div class="item-img">
-                                    <?php echo'<img src="'. $row['image'] .'" alt="">'; ?>
-                                </div>
-                                <div class="item-name">
-                                    <a href=""><?php echo $productName ?></a>
-                                </div>
-                                <div class="item-price">
-                                    <span><?php echo $productPrice ?>đ</span>
-                                    <strike><?php
-                                        $productGiaCu = round(($productPrice* 100) / (100 - $productDiscount) , -5);
-                                        echo $productGiaCu;
-                                    ?>đ</strike>
-                                </div>
-        
-                                <div class="quantity display-flex">
-                                        <div class="set">
-                                            <ul class="display-flex">
-                                                <li class="apart">
-                                                    <p>-</p>
-                                                </li>
-                                                <li class="count">
-                                                    <p>1</p>
-                                                </li>
-                                                <li class="plus">
-                                                    <p>+</p>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                 <input type="checkbox">
+                                    <div class="item-img">
+                                         <img src="'.$cart['prodImg'].'" alt="">
+                                    </div>
+                                    <div class="item-name">
+                                        <a href="">'.$cart['prodName'].'</a>
+                                 </div>
+                                 <div class="item-price" value="1">
+                                <span>'.$cart['prodPrice'].'đ</span>
+                                <strike>2đ</strike>
                             </div>
+
+                                 <div class="quantity display-flex">
+                                <div class="set">
+                                    <ul class="display-flex">
+                                        <button class="decrement">-</button>
+
+                                        <input type="text" id="quantity-count" value="1" min="1">
+
+                                        <button class="increment">+</button>
+
+                                </ul>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>';
+
+                       }
+                       echo '</ul>';
+                   }else{
+                       echo '<p>EMPTY</p>';
+                   }
+
+               ?>                
+                        </span>
+                                
+                            
+                    <!-- </ul> -->
 
                     <div class="total" style="float: right; margin: 5px;">
                         <table>
@@ -200,9 +239,10 @@
                                     Tiền hàng:
                                 </td>
                                 <td>
-                                    3.490.000đ
+                                    <?php echo $productPrice ?>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>
                                     Vận chuyển:
@@ -225,3 +265,59 @@
         </div>
     </section>
 </body>
+<script>
+    $(document).ready(function() {
+        var quantityInp = $('#quantity-count')
+        var quantityVal = parseInt(quantityInp.val());
+        var itemPrice = $('.item-price').val();
+        $('.increment').click(function() {
+        quantityVal++;
+        quantityInp.val(quantityVal);
+        });
+
+        $('.decrement').click(function() {
+        if (quantityVal > 1) {
+            quantityVal--;
+            quantityInp.val(quantityVal);
+        }
+        });   
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#city').change(function(){
+            var selectedCity = $(this).val();
+
+            $('#district option').hide();
+
+            $('#district option[value-city^=' + selectedCity +']').show();
+
+            $('#district').val($('#district option[value^=none]').val()).prop('disabled', false);
+
+        });
+        
+
+    })
+
+    $(document).ready(function(){
+        $('#district').change(function(){
+            var selectedDistrict = $(this).val();
+
+            $('#province option').hide();
+
+            $('#province option[value-district^=' + selectedDistrict +']').show();
+
+            $('#province').val($('#province option[value^=none]').val()).prop('disabled', false);
+        })
+    })
+
+    $(document).ready(function(){
+        $('.pay-method .submit').click(function(){
+            if(('#district').prop('disabled', true)){
+                $('i#caution').show()
+            }
+        })
+    })
+</script>
+</html>

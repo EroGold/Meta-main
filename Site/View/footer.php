@@ -163,27 +163,43 @@
                     <ul>
                         <li class="item pinterest">
                             <a href="">
-                                <img src="./asset/img/pinterest-icon.svg" alt="">
+                                <img src="./Public/img/pinterest-icon.svg" alt="">
                                 <span>Pinterest</span>
                             </a>
                         </li>
                         <li class="item facebook">
                             <a href="">
-                                <img src="./asset/img/facebook-icon.svg" alt="">
+                                <img src="./Public/img/facebook-icon.svg" alt="">
                                 <span>Facebook</span>
                             </a>
                         </li>
                         <li class="item youtube">
                             <a href="">
-                                <img src="./asset/img/youtube-icon.svg" alt="">
+                                <img src="./Public/img/youtube-icon.svg" alt="">
                                 <span>Youtube</span>
                             </a>
                         </li>
                     </ul>
 
                         <div class="item languages">
+                            Language
+                            /
                             <a href="">
-                                Language/语言/言語/언어/Sprache
+                                语言
+                            </a>
+                                /
+                            <a href="">
+                                言語
+                            </a>
+                                /
+                            <a href="">
+
+                                언어
+                            </a>
+                                /
+                            <a href="">
+
+                                Sprache
                             </a>
                         </div>
                 </div>
@@ -197,28 +213,28 @@
                 <h3>Tải ứng dụng trên điện thoại</h3>
                 <div class="app">
                     <a href="">
-                        <img src="./asset/img/apple-icon.svg" alt="">
+                        <img src="./Public/img/apple-icon.svg" alt="">
                         <span>AppleStore</span>
                     </a>
                 </div>
                 <div class="app">
                     <a href="">
-                        <img src="./asset/img/playstore-icon.svg" alt="">
+                        <img src="./Public/img/playstore-icon.svg" alt="">
                         <span>PlayStore</span>
                     </a>
                 </div>
                 <div class="app qr-link">
-                    <img src="./asset/img/qrcode-ios.png" alt="">
+                    <img src="./Public/img/qrcode-ios.png" alt="">
                 </div>
             </div>
 
             <div class="pay">
                 <h3>Chấp nhận thanh toán</h3>
-                <img src="./asset/img/visa.svg" alt="">
-                <img src="./asset/img/mastercard.svg" alt="">
-                <img src="./asset/img/internet-banking.svg" alt="">
-                <img src="./asset/img/cash.svg" alt="">
-                <img src="./asset/img/alepay.svg" alt="">
+                <img src="./Public/img/visa.svg" alt="">
+                <img src="./Public/img/mastercard.svg" alt="">
+                <img src="./Public/img/internet-banking.svg" alt="">
+                <img src="./Public/img/cash.svg" alt="">
+                <img src="./Public/img/alepay.svg" alt="">
             </div>
         </div>
         
@@ -234,22 +250,22 @@
             <div class="verified">
                 <div class="verified-item">
                     <a href="">
-                        <img src="./asset/img/bo-cong-thuong.png" alt="">
+                        <img src="./Public/img/bo-cong-thuong.png" alt="">
                     </a>
                 </div>
                 <div class="verified-item">
                     <a href="">
-                        <img src="./asset/img/comodo_secure_seal.png" alt="">
+                        <img src="./Public/img/comodo_secure_seal.png" alt="">
                     </a>
                 </div>
                 <div class="verified-item">
                     <a href="">
-                        <img src="./asset/img/dmca_logo.png" alt="">
+                        <img src="./Public/img/dmca_logo.png" alt="">
                     </a>
                 </div>
                 <div class="verified-item">
                     <a href="">
-                        <img src="./asset/img/handle_cert.png" alt="">
+                        <img src="./Public/img/handle_cert.png" alt="">
                     </a>
                 </div>
             </div>

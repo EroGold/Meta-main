@@ -3,422 +3,71 @@
             <div class="suggest">
                 <div class="suggest-header-box">
                     <div class="box-title">
-                        <img src="./asset/img/prod-hot-a.png" alt="">
+                        <img src="./Public/img/prod-hot-a.png" alt="">
                         <h2>Gợi ý cho bạn</h2>
                     </div>
                 </div>
 
                 <div class="suggest-container">
-                    <ul>
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
+                    <ul class="row-cols-5">
+                        <?php
+                            $connection = mysqli_connect('localhost','root','','meta');
 
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
+                            if (!$connection) {
+                                die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                            }
+                        
+                            
+                            // Truy vấn SQL để lấy danh sách sản phẩm
+                            $query = "SELECT * FROM product
+                                        WHERE sold < count
+                                         ORDER BY sold DESC";
+                            $result = mysqli_query($connection, $query);
+                            
+                            if (!$result) {
+                                die('Lỗi truy vấn: ' . mysqli_error($connection));
+                            }
+                            
+                            // Hiển thị danh sách sản phẩm dưới dạng HTML
+                            if (mysqli_num_rows($result) > 0) {
 
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<li data-prod_id="'.$row['prod_id'].'" class="col to-product">
+                                        <div class="sugg-product">
+                                            <div class="sugg-tragop">
+                                                Trả góp
+                                            </div>
+            
+                                            <div class="sugg-discount">
+                                                <span>'.$row['discount'].'%</span>
+                                            </div>
+            
+                                            <div class="sugg-thumb">
+                                                <img src="./'.$row['image'].'" alt="">
+                                            </div>
+            
+                                            <div class="sugg-name">
+                                                <a href="">
+                                                    <h3>'.$row['info'].'</h3>
+                                                </a>
+                                            </div>
+            
+                                            <div class="sold">
+                                                <div class="sold-count">
+                                                    Đã bán '.$row['sold'].'
+                                                </div>
+            
+                                                <div class="sold-percent">
+                                                    <div class="sold-per20" style="width:'.($row['sold'] / $row['count']) * 100 .'%">
+                                                        <div class="sold-percent-ele"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul>
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="sugg-product">
-                                <div class="sugg-tragop">
-                                    Trả góp
-                                </div>
-
-                                <div class="sugg-discount">
-                                    <span>-21%</span>
-                                </div>
-
-                                <div class="sugg-thumb">
-                                    <img src="./asset/img/may-lanh-casper-gc-12is35-300.jpg" alt="">
-                                </div>
-
-                                <div class="sugg-name">
-                                    <a href="">
-                                        <h3>Điều hòa 1 chiều Casper Inverter 1HP TC-09IS35 (Model 2023)</h3>
-                                    </a>
-                                </div>
-
-                                <div class="sold">
-                                    <div class="sold-count">
-                                        Đã bán 80
-                                    </div>
-
-                                    <div class="sold-percent">
-                                        <div class="sold-per20">
-                                            <div class="sold-percent-ele"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                                    </li>';
+                                    }
+                                }
+                        ?>
                     </ul>
 
                     <div class="more-catalog">
