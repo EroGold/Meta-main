@@ -19,7 +19,7 @@
 
                 <div class="cart-item">
 
-                    <div id="modalContent">
+                    <div class="modalContent">
 
                     </div>
                     

@@ -1347,7 +1347,7 @@
                 data: {soluong: soluong, id: prodId, name: prodName, discount: prodDiscount, price: prodPrice, img: prodImg},
 
                 success:function(response){
-                    $('#modalContent').html(response);
+                    $('.modalContent').html(response);
 
                 }
             })

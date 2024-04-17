@@ -2,7 +2,7 @@
 
 <div class="top-ads">
         <a href="">
-            <img src="./asset/img/Banner-dien-may-1236x60-a.png" style="height: 60px; width: 1236px;" alt="">
+            <img src="./Public/img/Banner-dien-may-1236x60-a.png" style="height: 60px; width: 1236px;" alt="">
         </a>
     </div>
     <header>
@@ -194,7 +194,7 @@
                     url: "Site/Controller/load_cart.php",
                     method: "GET",
                     success: function(response) {
-                        $('#modalContent').html(response);
+                        $('.modalContent').html(response);
                     }
                 })
             })

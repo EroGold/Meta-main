@@ -190,8 +190,17 @@
                         <?php
                    
                    if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                       echo '<ul>';
+                    $billTotalPrice = 0;
+                    $ship = 0;
+                    echo '<ul>';
                        foreach ($_SESSION['cart'] as $prodId => $cart) {
+                        $price = $cart['prodPrice'];
+
+                        $totalPrice = $price * $cart['soluong'];
+
+                        $billTotalPrice += $totalPrice;
+
+                        $bill = $billTotalPrice + $ship;
                             echo'<li>
                             <div class="bill-item display-flex pay-information">
                                  <input type="checkbox">
@@ -202,7 +211,7 @@
                                         <a href="">'.$cart['prodName'].'</a>
                                  </div>
                                  <div class="item-price" value="1">
-                                <span>'.$cart['prodPrice'].'đ</span>
+                                <span>'.number_format($cart['prodPrice'], 0, ',', '.').'đ</span>
                                 <strike>2đ</strike>
                             </div>
 
@@ -221,7 +230,32 @@
                     </li>';
 
                        }
-                       echo '</ul>';
+                       echo '</ul>
+                       <div class="total" style="float: right; margin: 5px;">
+                       <table>
+                           <tr>
+                               <td>
+                                   Tiền hàng:
+                               </td>
+                               <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                           </tr>
+
+                           <tr>
+                               <td>
+                                   Vận chuyển:
+                               </td>
+                               <td>
+                                   Miễn phí
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>
+                                   Tổng tiền:
+                               </td>
+                               <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                           </tr>
+                       </table>
+                   </div>';
                    }else{
                        echo '<p>EMPTY</p>';
                    }
@@ -232,35 +266,7 @@
                             
                     <!-- </ul> -->
 
-                    <div class="total" style="float: right; margin: 5px;">
-                        <table>
-                            <tr>
-                                <td>
-                                    Tiền hàng:
-                                </td>
-                                <td>
-                                    <?php echo $productPrice ?>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Vận chuyển:
-                                </td>
-                                <td>
-                                    Miễn phí
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Tổng tiền:
-                                </td>
-                                <td>
-                                    3.490.000đ
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                    
             </div>
         </div>
     </section>
