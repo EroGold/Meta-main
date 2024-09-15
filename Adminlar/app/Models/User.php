@@ -17,8 +17,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'user';
+    protected $primaryKey = 'user_id'; // Đặt tên primary key của bạn tại đây
+
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];

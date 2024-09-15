@@ -27,9 +27,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Funiki'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Funiki' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -61,9 +62,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'AQUA'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'AQUA' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -95,9 +97,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Casper'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Casper' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -129,9 +132,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Electrolux'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Electrolux' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -163,9 +167,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Toshiba'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Toshiba' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -197,9 +202,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Samsung'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Samsung' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -231,9 +237,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Sharp'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Sharp' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -265,9 +272,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Hitachi'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Hitachi' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -298,9 +306,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Panasonic'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Panasonic' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -330,9 +339,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'LG'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'LG' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -364,9 +374,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Beko'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Beko' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -398,9 +409,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Mitsubishi Electric'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Mitsubishi Electric' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -432,9 +444,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Bosch'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Bosch' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -466,9 +479,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Baumatic'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Baumatic' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -500,9 +514,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Hisense'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Hisense' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -533,10 +548,11 @@
                                     if (!$connection) {
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
-                                
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Coex'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Coex' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -568,9 +584,10 @@
                                         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
                                     }
                                 
-                                    
+                                    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
                                     // Truy vấn SQL để lấy danh sách sản phẩm
-                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Darling'";
+                                    $query = "SELECT COUNT(*) AS product_count FROM product where brand = 'Darling' and catalog_id = '$catalogId'";
                                     $result = mysqli_query($connection, $query);
                                     
                                     if (!$result) {
@@ -590,7 +607,7 @@
                             </i>
                         </a>
                     </li>
-                    <li class="show">
+                    <li class="show" style="justify-content: center;">
                         <a href="">
                             Xem thêm<i class="fa-solid fa-angles-down"></i>
                         </a>
@@ -607,6 +624,8 @@
         $(document).ready(function(e){
             $(".detail .item ul li").not('.show').not('.brand-search').click(function(e){
                 e.preventDefault();
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var catalogId = urlParams.get('catalog_id');
 
                     var optionBrand = $('li .search-brand:has(.checkbox:checked)').data('brand');
                     var optionCapacity = $('li .search-capacity:has(.checkbox:checked)').data('capacity');
@@ -614,8 +633,10 @@
                     var optionTech = $('li .search-tech:has(.checkbox:checked)').data("tech");
                     var optionUtiliti = $('li .search-utiliti:has(.checkbox:checked)').data("utiliti");
                     var optionModel = $('li .search-model:has(.checkbox:checked)').data("model");
+                    
 
                     var params = {
+                        'catalogId' : catalogId,
                         'brand' : optionBrand,
                         'capacity' : optionCapacity,
                         'origin' : optionOrigin,

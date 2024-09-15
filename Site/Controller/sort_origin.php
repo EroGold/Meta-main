@@ -5,14 +5,14 @@
         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
     }
 
+        $catalogId = $_POST['catalogId'] ?? '';
+
         $selectedOrigin = $_POST['origin'] ?? ''; 
         $selectedBrand = $_POST['brand'] ?? '';
         $selectedCapacity = $_POST['capacity'] ?? ''; 
         $selectedTech = $_POST['tech'] ?? ''; 
         $selectedUtiliti = $_POST['utiliti'] ?? ''; 
         $selectedModel = $_POST['model'] ?? ''; 
-
-
 
         $condition = '';
         if($selectedOrigin){
@@ -22,7 +22,7 @@
             $condition .= " and  product.brand = '$selectedBrand'"; 
         }
         if($selectedCapacity){
-            $condition .= " and  `product-info`.dungtichsudong BETWEEN $selectedCapacity"; 
+            $condition .= " and  `product-info`.dungtichsudung BETWEEN $selectedCapacity"; 
         }
         if($selectedModel){
             $condition .= " and  `product-info`.model = '$selectedModel'"; 
@@ -33,9 +33,10 @@
         if($selectedTech){
             $condition .= " and  `product-info`.inverter = '$selectedTech'"; 
         }
+        
         $sql = "SELECT * FROM product
                 INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
-                WHERE 1=1 $condition";
+                WHERE product.catalog_id = $catalogId $condition";
         $result = mysqli_query($connection, $sql);
 
         if (!$result) {
@@ -46,6 +47,7 @@
             echo '<ul class="row row-cols-4">';
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<li data-prod_id="'.$row['prod_id'].'" class="col to-product">';
+                echo '<a href="product.php?prod_id='.$row['prod_id'].'">';
                 echo'<div class="flash-sale-product">';
     
                 echo'<div class="tragop">';
@@ -84,6 +86,7 @@
                 echo'</div>';
     
                 echo'</div>';
+                echo'</a>';
                 echo'</li>';
             }
             echo '</ul>';

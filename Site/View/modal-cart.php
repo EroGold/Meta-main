@@ -49,7 +49,8 @@
                             foreach ($viewedProducts as $product) {
                             // Hiển thị thông tin về sản phẩm (có thể là tên, hình ảnh, giá, v.v.)
 
-                            echo '<div class="item" data-prod_id="'.$product['productId'].'">
+                            echo '<a href="product.php?prod_id='.$product['productId'].'">
+                                <div class="item" data-prod_id="'.$product['productId'].'">
                                     <div class="item-img">
                                         <img src="'. $product['productImage'] .'" alt="">
                                     </div>
@@ -74,10 +75,8 @@
                                             <p>'. date('H:i:s d-m-Y', $product['timestamp']).'</p>
                                         </div>
                                     </div>
-                                    <button class="addToCart">
-                                        Cho vào giỏ
-                                    </button>
-                                </div>';
+                                </div>
+                                </a>';
                             }   
                         ?>
                 </div>

@@ -28,7 +28,7 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<li class="thuonghieu-item">';
                                 echo     '<a href="">';
-                                echo       '<img src=".'. $row['brand_img'] .'" alt="">';
+                                echo       '<img src="'. $row['brand_img'] .'" alt="">';
                                 echo    '</a>';
                                 echo'</li>';
                             }

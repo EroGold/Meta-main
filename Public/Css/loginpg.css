@@ -34,9 +34,10 @@
 }
 
 .form-input{
-    position: relative;
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
+    align-items: flex-start;
 }
 
 .form-input input{
@@ -48,6 +49,5 @@
 }
 
 .form-input label{
-    position: absolute;
     left: 5px;
 }

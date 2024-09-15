@@ -34,12 +34,7 @@
                                             echo '<span class="txt-login">';
                                             echo    "Xin chào,<strong> $username </strong>";
                                             echo "</span>";
-    
-                                            echo '<span class="txt-login-more">';
-                                            echo    "Có";
-                                            echo    "<b> 1 </b>";
-                                            echo    "sản phẩm trong giỏ";
-                                            echo "</span>";
+                                            
                                             echo '<div class="acc-hover-container hover">';
                                             echo '<div class="up-arrow">';
                                             echo    '<div class="outer">';

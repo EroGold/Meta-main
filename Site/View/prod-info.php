@@ -4,7 +4,7 @@
             <span>Dung tích</span>
         </div>
 
-        <div class="item">
+        <!-- <div class="item">
                 <ul>
                     <li>
                         <a href="#" class="search-capacity" data-capacity="0 and 100">
@@ -108,7 +108,7 @@
                         </a>
                     </li>
                 </ul>
-        </div>
+        </div> -->
     </div>
 
     <div class="origin detail">

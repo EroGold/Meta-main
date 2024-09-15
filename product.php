@@ -22,18 +22,8 @@
             $productPrice = $row['price'];
             $productCount = $row['count'];
             $productTotalCapacity = $row['dungtichtong'];
-            $productUseCapacity = $row['dungtichsudong'];
-            $productTech = $row['khangkhuan'];
-            $productDoor = $row['socua'];
-            $productPerson = $row['songsudung'];
-            $productUtiliti = $row['tienich'];
+            $productUseCapacity = $row['dungtichsudung'];
             $productWattage = $row['congsuat'];
-            $productIncome = $row['gas'];
-            $productFreeze = $row['dongtuyet'];
-            $productMaterial = $row['khay'];
-            $productSupply = $row['nguondien'];
-            $productSize = $row['kichthuoc'];
-            $productWeight = $row['trongluong'];
             $productThuonghieu = $row['xuatxuthuonghieu'];
             $productXuatxu = $row['xuatxu'];
             $productBaohanh = $row['baohanh'];
@@ -73,27 +63,6 @@
     setcookie('viewedProducts', json_encode($viewedProducts), time() + 30 * 24 * 60 * 60); // 30 ngày là thời gian sống của cookie
     }
     
-    // if(isset($_POST['add_to_cart']) && ($_POST['add_to_cart'])){
-      
-    //     $_SESSION['cart'] = [];
-    //     $prodId = $_POST['prodId'];
-    //     $prodName = $_POST['prodName'];
-    //     $prodDiscount = $_POST['prodDiscount'];
-    //     $prodPrice = $_POST['prodPrice'];
-    //     $soluong = $_POST['soluong'];
-    //     $prodImg = $_POST['prodImg'];
-
-    //     $cart = [
-    //         'prodId' => $prodId,
-    //         'prodName' => $prodName,
-    //         'prodDiscount' => $prodDiscount,
-    //         'prodPrice' => $prodPrice,
-    //         'soluong' => $soluong,
-    //         'prodImg' => $prodImg,
-    //     ];
-    //         $_SESSION['cart'][$prodId] = $cart;
-    // }
-
     
 ?>
 
@@ -116,9 +85,6 @@
 </head>
 <body>
     <?php include './Site/View/header.php'; ?>
-
-    <?php include './Site/View/prod-link.php'; ?>
-
     
     <section>
         <div class="warp">
@@ -212,7 +178,7 @@
                     <div class="brand display-flex">
                         <p>Thương hiệu: </p>
                         <div class="brand-type">
-                            <p> <?php echo $productBrand?>|<?php echo $productType?></p>
+                            <p> <?php echo $productBrand?></p>
                         </div>
                     </div>
         
@@ -257,22 +223,25 @@
 
                                     <p>Cho vào giỏ</p>
                                     
-                                    <span  class="fa-solid fa-cart-plus addToCart" 
+                                    <span  class="addToCart" 
                                      data-soluong="1" data-id="<?php echo $productId ?>" 
                                      data-name="<?php echo $productName ?>"
                                       data-discount="<?php echo $productDiscount ?>"
                                       data-price="<?php echo $productPrice ?>" 
                                       data-img="<?php echo $productImage ?>">
+                                      <i class="fa-solid fa-cart-plus"></i>
                                     </span>
                                 </div>
                             </div>
                             <div class=" buy buy-1 display-flex">
                                 <div class="buy-btn display-flex">
                                     <i class="fa-solid fa-cart-shopping"></i>
-                                    <div class="content">
-                                        <strong>Đặt mua</strong>
-                                        <p>Giao hàng tận nơi trên toàn quốc</p>
-                                    </div>
+                                    <a href="bill.php?prod_id=<?php echo $productId ?>">
+                                        <div class="content">
+                                            <strong>Đặt mua</strong>
+                                            <p>Giao hàng tận nơi trên toàn quốc</p>
+                                        </div>
+                                    </a>
                                 </div>
                                 <div class="buy-btn display-flex">
                                     <i class="fa-solid fa-headset"></i>
@@ -447,7 +416,7 @@
             </div>
         </div>
     </section>
-<!-- Sản phẩm tương tự -->
+<!-- Sản phẩm tương tự
 <section>
         <div class="warp">
             <div class="similar">
@@ -477,8 +446,7 @@
                             }
 
                             $sql = "SELECT * FROM product
-                                    INNER JOIN `product-info` ON product.prod_id = `product-info`.prod_id
-                                    WHERE `product-info`.`type` = '$productType'";
+                                    WHERE type = '$productType'";
                             $result = $connection->query($sql);
 
                             if (!$result) {
@@ -539,9 +507,9 @@
                 </div>
             </div>
         </div>
-</section>
+</section> -->
 
-<section>
+<!-- <section>
     <div class="float-right-care-list">
         <div class="care-title">
             <p>Có thể bạn quan tâm</p>
@@ -607,7 +575,7 @@
             </ul>
         </div>
     </div>
-</section>
+</section> -->
 
     <!-- Thông số kỹ thuật -->
 <section>
@@ -628,61 +596,11 @@
                             <td>Dung tích sử dụng</td>
                             <td><?php echo $productUseCapacity ?> lít</td>
                         </tr>
-                        
-                        <tr>
-                            <td>Kháng khuẩn, khử mùi</td>
-                            <td><?php echo $productTech ?></td>
-                        </tr>
-                        
-                        <tr>
-                                <td>Số cửa</td>
-                                <td><?php echo $productDoor ?> cửa</td>
-                            </tr>
-                                                
-                            <tr>
-                                <td>Số người sử dụng</td>
-                                <td><?php echo $productPerson ?> người</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Tiện ích</td>
-                                <td><?php echo $productUtiliti ?></td>
-                            </tr>
-                            
+
                             <tr>
                                 <td>Công suất</td>
                                 <td><?php echo $productWattage ?>W</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Gas sử dụng</td>
-                                <td><?php echo $productIncome ?></td>
-                            </tr>
-                                                
-                            <tr>
-                                <td>Đóng tuyết</td>
-                                <td><?php echo $productFreeze ?></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Chất liệu khay</td>
-                                <td><?php echo $productMaterial ?></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Nguồn điện áp</td>
-                                <td><?php echo $productSupply ?></td>
-                            </tr>
-                                                
-                            <tr>
-                                <td>Kích thước</td>
-                                <td>Cao x rộng x sâu (<?php echo $productSize ?>)</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Trọng lượng sản phẩm</td>
-                                <td><?php echo $productWeight ?> kg</td>
-                            </tr>
+                            </tr>                 
                             
                             <tr>
                                 <td>Xuất xứ thương hiệu</td>
@@ -701,174 +619,6 @@
                         </table>                      
                         </div>
                     </div>
-                </div>
-</section>
-<!-- Goi y -->
-<section>
-                <div class="warp">
-                <div class="suggest" style="width: 75%;">
-                    <div class="sugg-header">
-
-                    </div>
-
-                    <div class="sugg-item similar-item"  >
-                        <ul class="row row-cols-4">
-                        <li class="col">
-                        <div class="flash-sale-product">
-                            <div class="tragop">
-                                <span>Trả góp</span>
-                            </div>
-
-                            <div class="discount">
-                                <span>-10%</span>
-                            </div>
-
-                            <div class="thumb">
-                                <img src="./Public/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                            </div>
-
-                            <div class="name">
-                                <a href="">Tủ lạnh Funiki FR-135CD (135 lít, có đóng tuyết)</a>
-                            </div>
-
-                            <div class="rate">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-
-                            <div class="price">
-                                <strong>3490000đ</strong>
-                                <strike>3990000đ</strike>
-                            </div>
-
-                            <div class="buy-now">
-                                <a href="">
-                                    Mua ngay
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col">
-                        <div class="flash-sale-product">
-                            <div class="tragop">
-                                <span>Trả góp</span>
-                            </div>
-
-                            <div class="discount">
-                                <span>-10%</span>
-                            </div>
-
-                            <div class="thumb">
-                                <img src="./Public/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                            </div>
-
-                            <div class="name">
-                                <a href="">Tủ lạnh Funiki FR-135CD (135 lít, có đóng tuyết)</a>
-                            </div>
-
-                            <div class="rate">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-
-                            <div class="price">
-                                <strong>3490000đ</strong>
-                                <strike>3990000đ</strike>
-                            </div>
-
-                            <div class="buy-now">
-                                <a href="">
-                                    Mua ngay
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col">
-                        <div class="flash-sale-product">
-                            <div class="tragop">
-                                <span>Trả góp</span>
-                            </div>
-
-                            <div class="discount">
-                                <span>-10%</span>
-                            </div>
-
-                            <div class="thumb">
-                                <img src="./Public/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                            </div>
-
-                            <div class="name">
-                                <a href="">Tủ lạnh Funiki FR-135CD (135 lít, có đóng tuyết)</a>
-                            </div>
-
-                            <div class="rate">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-
-                            <div class="price">
-                                <strong>3490000đ</strong>
-                                <strike>3990000đ</strike>
-                            </div>
-
-                            <div class="buy-now">
-                                <a href="">
-                                    Mua ngay
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col">
-                        <div class="flash-sale-product">
-                            <div class="tragop">
-                                <span>Trả góp</span>
-                            </div>
-
-                            <div class="discount">
-                                <span>-10%</span>
-                            </div>
-
-                            <div class="thumb">
-                                <img src="./Public/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                            </div>
-
-                            <div class="name">
-                                <a href="">Tủ lạnh Funiki FR-135CD (135 lít, có đóng tuyết)</a>
-                            </div>
-
-                            <div class="rate">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-
-                            <div class="price">
-                                <strong>3490000đ</strong>
-                                <strike>3990000đ</strike>
-                            </div>
-
-                            <div class="buy-now">
-                                <a href="">
-                                    Mua ngay
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-
-                        </ul>
-                    </div>
-                </div>
                 </div>
 </section>
 
@@ -1001,9 +751,9 @@
                 <p>Bạn đang băn khoăn cần tư vấn? Vui lòng để lại số điện thoại hoặc lời nhắn, META sẽ liên hệ trả lời bạn sớm nhất.</p>
                     <form id="commentForm" action="Site/Controller/add_comment.php" method="POST">
                         <div class="your-rate display-flex">
+                            <input type="hidden" id="rate-point" name="rate-point" value="0">
                             <p>Đánh giá của bạn về sản phẩm</p>
                             <div class="your-rate-star">
-                                <input type="hidden" id="rate-point" name="rate-point" value="0">
                                 <ul class="display-flex" >
                                     <li class="rate-star" value="1">
                                         <i class="fa-solid fa-star"   ></i>
@@ -1030,7 +780,13 @@
                         </div>
                         <div class="question-input">
 
-                            <textarea class="txt-input" id="comment" name="comment" placeholder="Nhập câu hỏi / bình luận / nhận xét tại đây..."></textarea>
+                            <?php 
+                                if(isset($_SESSION['username'])){
+                                    echo '<textarea class="txt-input" id="comment" name="comment" placeholder="Nhập câu hỏi / bình luận / nhận xét tại đây..."></textarea>';
+                                } else {
+                                    echo '<textarea class="txt-input" id="comment" name="comment" placeholder="Nhập câu hỏi / bình luận / nhận xét tại đây..." disabled></textarea>';
+                                }
+                            ?>
                             <input type="hidden" id="prod_id" name="prod_id" value="<?php echo $productId ?>">
                             <div class="name-input">
                                 <div class="option">
@@ -1046,13 +802,16 @@
                                         </li>
                                     </ul>
                                 </div>
-        
-                                <input type="text" id="name" value="<?php 
+                                
+                                <?php 
                                     if(isset($_SESSION['username'])){
                                         $username = $_SESSION['username'];
-                                        echo $username;
+                                        echo '<input type="text" id="name" value="'.$username.'" placeholder="Nhập tên của bạn">';
+                                    } else {
+                                        echo '<input type="text" id="name" value="" placeholder="Nhập tên của bạn" disabled>';
                                     }
-                                ?>" placeholder="Nhập tên của bạn">
+                                ?>
+                                
                                 <input type="hidden" id="user_id" name="user_id" value="<?php 
 
                                     if(isset($_SESSION['user_id'])){
@@ -1107,21 +866,54 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<div class="user-name display-flex">';
                                 echo '<div class="small-avatar">';
-                                echo '<img src="'. $row['avatar'] .'" alt="">';                            ;
+                                echo '<img src="" alt="">';                            ;
                                 echo '</div>';
 
                                 echo '<div class="name">';
                                 echo ''. $row['username'] .'';
                                 echo '</div>';
 
-                                echo '<div class="rating">';
-                                echo '<i class="fa-solid fa-star"></i>';
-                                echo '<i class="fa-solid fa-star"></i>';
-                                echo '<i class="fa-solid fa-star"></i>';
-                                echo '<i class="fa-solid fa-star"></i>';
-                                echo '<i class="fa-solid fa-star"></i>';
-                                echo '</div>';
-                                
+                                if($row['rate'] == 5){
+                                    echo '<div class="rating">';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '</div>';
+                                    
+                                } else if($row['rate'] == 4){
+                                    echo '<div class="rating">';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '</div>';
+                                    
+                                } else if($row['rate'] == 3){
+                                    echo '<div class="rating">';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '</div>';
+                                    
+                                } else if($row['rate'] == 2){
+                                    echo '<div class="rating">';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '</div>';
+                                    
+                                } else if($row['rate'] == 1){
+                                    echo '<div class="rating">';
+                                    echo '<i class="fa-solid fa-star"></i>';
+                                    echo '</div>';
+                                    
+                                } else {
+                                    echo '<div class="rating">';
+                                   
+                                    echo '</div>';
+                                    
+                                }
                                 echo '</div>';
 
                                 echo '<div class="ques-content">';

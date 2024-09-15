@@ -21,6 +21,7 @@
 
     <section>
         <div class="warp">
+            <form action="Site/Controller/new-order.php" method="POST">
             <div class="bill display-flex bw">
                 <div class="bill-left">
                     <div class="bill-title">
@@ -35,7 +36,7 @@
                                     Họ và Tên
                                 </span>
 
-                                <input type="text" placeholder="Họ và tên">
+                                <input type="text" placeholder="Họ và tên" id="name" name="name">
                             </div>
                             
                             <div class="phone-number display-flex" style="flex-direction: column;">
@@ -43,7 +44,7 @@
                                     Số điện thoại
                                 </span>
 
-                                <input type="number" placeholder="Số điện thoại">
+                                <input type="number" placeholder="Số điện thoại" name="phone_number">
                             </div>
                         </div>
 
@@ -123,7 +124,7 @@
                                 </select>
                             </div>
 
-                            <input type="text" >
+                            <input type="text" name="address">
 
                             <div class="pay-method">
                                 <div class="pay-title">
@@ -167,13 +168,13 @@
                                 <input type="text" placeholder="Để lại lời nhắn cho Meta(nếu có)">
                                 
                                 <i id="caution">Vui lòng nhập đầy đủ thông tin</i>
+
                                 <button class="submit"><i class="fa-solid fa-cart-shopping"></i> Gửi đơn hàng</button>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
-    
                 <div class="bill-right">
                     <div class="bill-title">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -188,78 +189,165 @@
                     <!-- <ul> -->
                         <span>
                         <?php
-                   
-                   if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                    $billTotalPrice = 0;
-                    $ship = 0;
-                    echo '<ul>';
-                       foreach ($_SESSION['cart'] as $prodId => $cart) {
-                        $price = $cart['prodPrice'];
+                    $connection = mysqli_connect('localhost','root','','meta');
 
-                        $totalPrice = $price * $cart['soluong'];
+                    if (!$connection) {
+                        die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                    }
+                    
+                    $prod_id = isset($_GET['prod_id']) ? intval($_GET['prod_id']) : '';
 
-                        $billTotalPrice += $totalPrice;
+                    if ($prod_id != '') {
+                        $sql = "SELECT * FROM product WHERE prod_id = $prod_id";
+                        $result = $connection->query($sql);
 
-                        $bill = $billTotalPrice + $ship;
+                        if ($result->num_rows > 0) {
+                            $product = $result->fetch_assoc();
+                            $billTotalPrice = 0;
+                            $ship = 0;
+                            $price = $product['price'];
+
+                            $totalPrice = $price;
+
+                            $billTotalPrice += $totalPrice;
+
+                            $bill = $billTotalPrice + $ship;
                             echo'<li>
-                            <div class="bill-item display-flex pay-information">
-                                 <input type="checkbox">
-                                    <div class="item-img">
-                                         <img src="'.$cart['prodImg'].'" alt="">
+                                    <input type="hidden" name="prod_id" value="'.$product['prod_id'].'">
+                                    <div class="bill-item display-flex pay-information">
+                                        <input type="checkbox">
+                                        <div class="display-flex" style="justify-content: space-between; width: 100%;">
+                                            <div class="display-flex">
+                                                <div class="item-img">
+                                                    <img src="'.$product['image'].'" alt="">
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                                                    <div class="item-name">
+                                                        <a href="">'.$product['info'].'</a>
+                                                    </div>
+                                                    <div class="item-price" value="1" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                                        <span>'.number_format($product['price'], 0, ',', '.').'đ</span>
+                                                        <strike>'.number_format(round(($product['price']* 100) / (100 - $product['discount']) , -5), 0, ',', '.').'đ</strike>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quantity display-flex">
+                                            <div class="set">
+                                                <ul class="display-flex">
+                                                    <button class="decrement">-</button>
+
+                                                    <input type="text" id="quantity-count" value="1" min="1">
+
+                                                    <button class="increment">+</button>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="item-name">
-                                        <a href="">'.$cart['prodName'].'</a>
-                                 </div>
-                                 <div class="item-price" value="1">
-                                <span>'.number_format($cart['prodPrice'], 0, ',', '.').'đ</span>
-                                <strike>2đ</strike>
-                            </div>
+                                </li>';
+                            }
+                            echo '</ul>
+                            <div class="total" style="float: right; margin: 5px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        Tiền hàng:
+                                    </td>
+                                    <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                                </tr>
 
-                                 <div class="quantity display-flex">
-                                <div class="set">
-                                    <ul class="display-flex">
-                                        <button class="decrement">-</button>
+                                <tr>
+                                    <td>
+                                        Vận chuyển:
+                                    </td>
+                                    <td>
+                                        Miễn phí
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tổng tiền:
+                                    </td>
+                                    <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                                </tr>
+                            </table>
+                        </div>';
+                        }else{
+                            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                                $billTotalPrice = 0;
+                                $ship = 0;
+                                echo '<ul>';
+                                   foreach ($_SESSION['cart'] as $prodId => $cart) {
+                                    $price = $cart['prodPrice'];
+            
+                                    $totalPrice = $price * $cart['soluong'];
+            
+                                    $billTotalPrice += $totalPrice;
+            
+                                    $bill = $billTotalPrice + $ship;
+                                        echo'<li>
+                                        <input type="hidden" name="prod_id" value="'.$cart['prodId'].'">
+                                        <div class="bill-item display-flex pay-information">
+                                             <input type="checkbox">
+                                                <div class="display-flex" style="justify-content: space-between; width: 100%;">
+                                            <div class="display-flex">
+                                                <div class="item-img">
+                                                    <img src="'.$cart['prodImg'].'" alt="">
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                                                    <div class="item-name">
+                                                        <a href="">'.$cart['prodName'].'</a>
+                                                    </div>
+                                                    <div class="item-price" value="1" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                                        <span>'.number_format($cart['prodPrice'], 0, ',', '.').'đ</span>
+                                                        <strike>'.number_format(round(($cart['prodPrice']* 100) / (100 - $cart['prodDiscount']) , -5), 0, ',', '.').'đ</strike>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quantity display-flex">
+                                            <div class="set">
+                                                <ul class="display-flex">
+                                                    <button class="decrement">-</button>
 
-                                        <input type="text" id="quantity-count" value="1" min="1">
+                                                    <input type="text" id="quantity-count" value="1" min="1">
 
-                                        <button class="increment">+</button>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </li>';
-
-                       }
-                       echo '</ul>
-                       <div class="total" style="float: right; margin: 5px;">
-                       <table>
-                           <tr>
-                               <td>
-                                   Tiền hàng:
-                               </td>
-                               <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
-                           </tr>
-
-                           <tr>
-                               <td>
-                                   Vận chuyển:
-                               </td>
-                               <td>
-                                   Miễn phí
-                               </td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   Tổng tiền:
-                               </td>
-                               <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
-                           </tr>
-                       </table>
-                   </div>';
-                   }else{
-                       echo '<p>EMPTY</p>';
-                   }
-
+                                                    <button class="increment">+</button>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>';
+            
+                                   }
+                                   echo '</ul>
+                                   <div class="total" style="float: right; margin: 5px;">
+                                   <table>
+                                       <tr>
+                                           <td>
+                                               Tiền hàng:
+                                           </td>
+                                           <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                                       </tr>
+            
+                                       <tr>
+                                           <td>
+                                               Vận chuyển:
+                                           </td>
+                                           <td>
+                                               Miễn phí
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                               Tổng tiền:
+                                           </td>
+                                           <td>'.number_format($billTotalPrice, 0, ',', '.').'</td>
+                                       </tr>
+                                   </table>
+                               </div>';
+                               }else{
+                                   echo '<p>EMPTY</p>';
+                               }
+                        }
                ?>                
                         </span>
                                 
@@ -267,7 +355,10 @@
                     <!-- </ul> -->
 
                     
+                </div>
             </div>
+
+            </form>
         </div>
     </section>
 </body>

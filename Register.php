@@ -68,49 +68,13 @@
                                     Quên mật khẩu
                                 </a>
                             </div>
-                            <button class="submit">
-                                đăng nhập
+                            <button class="submit" style="text-transform: uppercase">
+                                đăng ký
                             </button>
                             <div class="login-link">
                                 Bạn đã có tài khoản? <a href="Login.php">Đăng nhập</a>
                             </div>
                         </form>
-                        <div class="devide">
-                            <p>Hoặc</p>
-                        </div>
-
-                        <div class="social-login">
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Đăng nhập bằng email
-                                    </div>
-                                </a>
-                            </div>
-                                
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Zalo
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Google
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Facebook
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>

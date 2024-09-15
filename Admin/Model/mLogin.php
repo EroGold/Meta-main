@@ -17,19 +17,16 @@
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if ($password == $row["password"]) {
-            if($row["role"] == "admin"){
-                session_start();
+            session_start();
                 $_SESSION["username"] = $row['username'];
                 $_SESSION["user_id"] = $row['user_id'];
-                $_SESSION["username"] = $row['username'];
-                header("Location: http://localhost/Meta-main/manager.php");     
-            }else{
-                session_start();
-                $_SESSION["username"] = $row['username'];
-                $_SESSION["user_id"] = $row['user_id'];
-                $_SESSION["username"] = $row['username'];
-                header("Location: http://localhost/Meta-main/index.php");            
-            }
+                $_SESSION["avatar"] = $row['avatar'];
+                $_SESSION["email"] = $row['email'];
+                $_SESSION["password"] = $row['password'];
+                $_SESSION["phone_number"] = $row['phone_number'];
+                $_SESSION["sex"] = $row['sex'];
+                $_SESSION["birthday"] = $row['birthday'];
+                header("Location: http://localhost:8060/Meta-main/index.php");
             exit;
             // Bạn có thể tạo phiên làm việc ở đây và chuyển hướng người dùng
         } else {

@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                     <ul class="row-cols-xl-4">
-                        <li style="width: 270px;">
+                        <li>
                             <a href="">
                                 <div class="icon-market">
                                     <img src="./Public/img/kplusvietnam.png" alt="">

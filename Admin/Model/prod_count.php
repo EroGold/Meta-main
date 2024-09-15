@@ -5,9 +5,10 @@
         die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
     }
 
-    
+    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
     // Truy vấn SQL để lấy danh sách sản phẩm
-    $query = "SELECT COUNT(*) AS product_count FROM product";
+    $query = "SELECT COUNT(*) AS product_count FROM product WHERE catalog_id = '$catalogId'";
     $result = mysqli_query($connection, $query);
     
     if (!$result) {

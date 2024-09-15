@@ -87,7 +87,7 @@
 .search-box{
     position: absolute;
     top: 80px;
-    left: 338px;
+    left: 290px;
     width: 540px;
     height: 35px;
     background-color: #fff;
@@ -446,7 +446,7 @@ h2{
 } */
 
 .flash-sale-product .thumb img{
-    height: auto;
+    height: 200px;
     max-width: 100%;
     max-height: 100%;
 }
@@ -463,6 +463,10 @@ h2{
 .flash-sale-product .promo,
 .trend-product-item .promo{
     top: 10px;
+}
+
+.flash-sale-product .promo img{
+    width: 200px;
 }
 
 .flash-sale-product .tragop,
@@ -563,7 +567,12 @@ h2{
 
 .suggest-container ul{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.suggest-container ul::-webkit-scrollbar{
+    display: none;
 }
 
 .sugg-product{
@@ -1547,7 +1556,7 @@ footer{
         .btn a{
             border: 1px solid #000;
             border-radius: 5px;
-            padding: 5px 60px;
+            padding: 5px 50px;
             font-size: 16px;
             font-weight: 600;
         }

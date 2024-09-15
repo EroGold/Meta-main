@@ -4,10 +4,6 @@
     </a> 
     <i class="fa-solid fa-chevron-right"></i>
     <a href="">
-        Điện máy
-    </a>
-    <i class="fa-solid fa-chevron-right"></i>
-    <a href="">
-        Tủ lạnh
+        <?php echo $catalogName ?>
     </a>
 </div>

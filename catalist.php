@@ -1,4 +1,32 @@
+<?php 
+    $connection = mysqli_connect('localhost','root','','meta');
 
+    if (!$connection) {
+        die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+    }
+
+    $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+    $sql_product = "SELECT * FROM product 
+                    INNER JOIN `catalog` ON product.catalog_id = `catalog`.catalog_id
+                    WHERE product.catalog_id = $catalogId";
+    $result_product = $connection->query($sql_product);
+
+    if ($result_product->num_rows > 0) {
+        $product = $result_product->fetch_assoc();
+        $catalogName = $product['catalog_name'];
+        $productDiscount = $product['discount'];
+        $productImage = $product['image'];
+        $productName = $product['info'];
+        $productBrand = $product['brand'];
+        $productType = $product['type'];
+        $productPrice = $product['price'];
+        $productCount = $product['count'];
+    } else {
+        echo 'ERROR';
+    }
+
+    $connection->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +54,6 @@
         
            <?php include './Site/View/brand.php' ?>
     
-           <?php include './Site/View/prod-info.php' ?>
         </section>
     
         <section style="display: flex; flex-direction: column; margin-left: 10px;">
@@ -35,6 +62,9 @@
             <?php include './Site/View/prod-list.php'?>
         </section>
     </div>
+
+    <?php include './Site/View/footer.php' ?>
+
 </body>
 
 <script>

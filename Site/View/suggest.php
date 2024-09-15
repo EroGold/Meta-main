@@ -42,7 +42,7 @@
                                                 <span>'.$row['discount'].'%</span>
                                             </div>
             
-                                            <div class="sugg-thumb">
+                                            <div class="sugg-thumb" style="height: 174px;">
                                                 <img src="./'.$row['image'].'" alt="">
                                             </div>
             

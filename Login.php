@@ -61,42 +61,6 @@
                                 Bạn chưa có tài khoản? <a href="Register.php">Đăng ký</a>
                             </div>
                         </form>
-                        <div class="devide">
-                            <p>Hoặc</p>
-                        </div>
-
-                        <div class="social-login">
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Đăng nhập bằng email
-                                    </div>
-                                </a>
-                            </div>
-                                
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Zalo
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Google
-                                    </div>
-                                </a>
-                            </div>
-                            
-                            <div class="social">
-                                <a href="">
-                                    <div class="email social-btn">
-                                        Tiếp tục với Facebook
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +75,12 @@
     <script src="Public/Js/loginjs.js"></script>
 
     <script>
-        
+        $('document').ready(function(){
+            $('.form-input').click(function(){
+                $(this).children('label').hide();
+                $(this).children('label').siblings('label').show();
+            })
+        })
     </script>
 
 </body>

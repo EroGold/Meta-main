@@ -1,79 +1,30 @@
 <div class="prod-detail-horizontal">
     <div class="item">
         <ul style="display: flex; flex-wrap: wrap;">
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh 2 cánh </span>
-                </a>
+            <?php 
+                $connection = mysqli_connect('localhost','root','','meta');
 
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh side by side</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh mini</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh 1 cánh</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh 3 cánh</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh 4 cánh</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh 6 cánh</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh Multidoor</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ lạnh ô tô, Mobicool</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Minibar</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ đông</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="./asset/img/tu-lanh-funiki-fr-135cd-135-lit.jpg" alt="">
-                    <span class="title">Tủ mát</span>
-                </a>
-            </li>
+                if (!$connection) {
+                    die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
+                }
+
+                $catalogId = isset($_GET['catalog_id']) ? $_GET['catalog_id'] : 0 ;
+
+                $sql = "SELECT * FROM menu WHERE catalog_id = '$catalogId'";
+                $result = $connection->query($sql);
+
+                if ($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                        echo '<li>
+                            <a href="">
+                                <img src="./Public/img/'.$row['menu-img'].'" alt="">
+                                <span>'.$row['item-name'].'</span>
+                            </a>
+
+                        </li>';
+                    }
+                }
+            ?>
         </ul>
     </div>
 </div>

@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+
+  
 </head>
 <!--
 `body` tag options:
@@ -43,12 +45,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard v3</h1>
+            <h1 class="m-0">Quản lý sản phẩm </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v3</li>
+              <li class="breadcrumb-item active">Quản lý sản phẩm </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -60,46 +62,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
-
+          <div class="col-lg-11">
             <div class="card">
               <div class="card-header border-0">
                 <h3 class="card-title">Products</h3>
@@ -110,6 +73,9 @@
                   <a href="#" class="btn btn-tool btn-sm">
                     <i class="fas fa-bars"></i>
                   </a>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
                 </div>
               </div>
               <div class="card-body table-responsive p-0" style="height: 350px;">
@@ -118,7 +84,7 @@
                   <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Sales</th>
+                    <th>Sold</th>
                     <th>More</th>
                   </tr>
                   </thead>
@@ -133,11 +99,16 @@
                       <th>{{$product->price}}</th>
                       <th>{{$product->sold}} SOLD</th>
                       <th>
-                        <a href="" class="text-muted">
-                          <i class="fas fa-search">
-
-                          </i>
-                        </a>
+                        <button type="button" class="btn btn-primary edit-product-btn" data-toggle="modal" data-target="#productDetailModal" onclick="loadProductData({{ $product->prod_id }})">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <form action="{{ route('product.destroy', $product->prod_id) }}" method="POST" style="display:inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-primary bc-red delete-product-btn">
+                            <i class="fa-solid fa-xmark"></i>
+                          </button>
+                        </form>
                       </th>
                     </tr>
                     @endforeach
@@ -147,127 +118,7 @@
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);">View Report</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">
-                      <?php 
-                        $connection = mysqli_connect('localhost','root','','meta');
-
-                        if (!$connection) {
-                            die('Không thể kết nối đến cơ sở dữ liệu: ' . mysqli_connect_error());
-                        }
-                    
-                        
-                        // Truy vấn SQL để lấy danh sách sản phẩm
-                        $query = "SELECT SUM(price * sold) AS total_sold FROM product WHERE sold > 0";
-                        $result = mysqli_query($connection, $query);
-                        
-                        if (!$result) {
-                            die('Lỗi truy vấn: ' . mysqli_error($connection));
-                        }
-
-                        if ($result) {
-                          $row = mysqli_fetch_assoc($result);
-                          $totalSold = $row['total_sold'];
-                          echo number_format($totalSold, 0, ',', '.');
-                        } else {
-                            echo "Có lỗi xảy ra khi thực hiện truy vấn.";
-                        }
-
-
-                      ?>
-                    </span>
-                    <span>Sales Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 33.1%
-                    </span>
-                    <span class="text-muted">Since last month</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                  <canvas id="sales-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last year
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
-
-            <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Online Store Overview</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-success text-xl">
-                    <i class="ion ion-ios-refresh-empty"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-success"></i> 12%
-                    </span>
-                    <span class="text-muted">CONVERSION RATE</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-warning text-xl">
-                    <i class="ion ion-ios-cart-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
-                    </span>
-                    <span class="text-muted">SALES RATE</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-                <div class="d-flex justify-content-between align-items-center mb-0">
-                  <p class="text-danger text-xl">
-                    <i class="ion ion-ios-people-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-down text-danger"></i> 1%
-                    </span>
-                    <span class="text-muted">REGISTRATION RATE</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
+         
         </div>
         <!-- /.row -->
       </div>
@@ -292,11 +143,141 @@
     </div>
   </footer>
 </div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
+<div class="modal" id="addProductModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm Sản Phẩm Mới</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="container mt-5">
+          <div class="modal-body">
+              <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="form-group">
+                      <label for="brand">Danh mục:</label>
+                      <select name="catalog_id" id="catalog_id" class="form-control">
+                        <option value="">Chọn danh mục</option>
+                        @foreach($catalogs as $catalog)
+                          <option value="{{ $catalog->catalog_id }}">{{ $catalog->catalog_name }}</option>
+                        @endforeach
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="brand">Brand:</label>
+                      <input type="text" class="form-control" id="brand" name="brand" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="count">Count:</label>
+                      <input type="number" class="form-control" id="count" name="count" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="discount">Discount:</label>
+                      <input type="number" class="form-control" id="discount" name="discount">
+                  </div>
+                  <div class="form-group">
+                      <label for="image">Image:</label>
+                      <input type="file" class="form-control" id="image" name="image">
+                  </div>
+                  <div class="form-group">
+                      <label for="info">Info:</label>
+                      <textarea class="form-control" id="info" name="info" required></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="price">Price:</label>
+                      <input type="number" class="form-control" id="price" name="price" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="prod_status">Status:</label>
+                      <input type="text" class="form-control" id="prod_status" name="prod_status" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="sold">Sold:</label>
+                      <input type="number" class="form-control" id="sold" name="sold" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="type">Type:</label>
+                      <input type="text" class="form-control" id="type" name="type" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Save</button>
+              </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="productDetailModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thông Tin Sản Phẩm</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="container mt-5">
+          <div class="modal-body">
+              <form id="editProductForm">
+                  @csrf
+                  <input type="hidden" id="productId" name="productId">
+                  <div class="form-group">
+                  <label for="brand">Danh mục:</label>
+                      <select name="productCatalog" id="productCatalog" class="form-control">
+                        <option value="">Chọn danh mục</option>
+                        @foreach($catalogs as $catalog)
+                          <option value="{{ $catalog->catalog_id }}">{{ $catalog->catalog_name }}</option>
+                        @endforeach
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="discount">Discount:</label>
+                      <input type="number" class="form-control" id="productDiscount" name="productDiscount">
+                  </div>
+                  <div class="form-group">
+                      <label for="image">Image:</label>
+                      <input type="file" class="form-control" id="image" name="image">
+                  </div>
+                  <div class="form-group">
+                      <label for="info">Info:</label>
+                      <textarea class="form-control" id="productName" name="productName" required></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="price">Price:</label>
+                      <input type="number" class="form-control" id="productPrice" name="productPrice" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="prod_status">Status:</label>
+                      <input type="text" class="form-control" id="productStatus" name="productStatus" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="count">Count:</label>
+                      <input type="number" class="form-control" id="productCount" name="productCount" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="type">Type:</label>
+                      <input type="text" class="form-control" id="productType" name="productType" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="brand">Brand:</label>
+                      <input type="text" class="form-control" id="productBrand" name="productBrand" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Save</button>
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -309,5 +290,42 @@
 <script src="{{asset('js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('js/pages/dashboard3.js')}}"></script>
+
+<script>
+  function loadProductData(prod_id) {
+    $.ajax({
+        url: '/product/' + prod_id,
+        method: 'GET',
+        success: function(data) {
+            $('#productId').val(data.prod_id);
+            $('#productName').val(data.info);
+            $('#productPrice').val(data.price);
+            $('#productDiscount').val(data.discount);
+            $('#productCatalog').val(data.catalog_id);
+            $('#productType').val(data.type);
+            $('#productBrand').val(data.brand);
+            $('#productCount').val(data.count);
+            $('#productStatus').val(data.prod_status);
+            $('#productImage').val(data.image);
+            $('#editProductModal').modal('show');
+        }
+    });
+  }
+  $('#editProductForm').on('submit', function(e) {
+      e.preventDefault();
+      var formData = $(this).serialize();
+
+      $.ajax({
+          url: '/product/update',
+          method: 'POST',
+          data: formData,
+          success: function(response) {
+              alert(response.success);
+              window.location.reload();
+              // Reload page hoặc cập nhật danh sách sản phẩm ở đây nếu cần
+          }
+      });
+  });
+</script>
 </body>
 </html>
