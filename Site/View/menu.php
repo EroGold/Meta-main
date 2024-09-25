@@ -31,6 +31,14 @@
                                     }
                                 }
                             ?>
+
+                            <li class="pure-menu-item">
+                                <a href="">
+                                    <img src="./Public/img/263.png" alt="">
+                                    <span>Thể thao & ngoài trời</span>
+                                    
+                                </a>
+                            </li>
                             
                             <li class="pure-menu-item">
                                 <a href="">
